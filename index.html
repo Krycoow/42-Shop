@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>42 Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header reveal">
+        <div class="brand" id="brandMenu">
+            <button id="brandButton" class="brand__button" aria-haspopup="menu" aria-expanded="false">
+                <span class="logo">42</span>
+                <h1 class="title">Shop</h1>
+            </button>
+            <div id="brandDropdown" class="dropdown" role="menu" hidden>
+                <button class="dropdown__item" data-nav="inicio">Inicio</button>
+                <button class="dropdown__item" data-nav="auth">Crear cuenta / Iniciar sesión</button>
+            </div>
+        </div>
+        <nav class="actions">
+            <div class="prefs">
+                <select id="langSelect" aria-label="Idioma">
+                    <option value="es">ES</option>
+                    <option value="en">EN</option>
+                    <option value="pt">PT</option>
+                </select>
+                <select id="curSelect" aria-label="Moneda">
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                </select>
+            </div>
+            <div class="user" id="userArea" hidden>
+                <button id="userButton" class="user__button" aria-haspopup="menu" aria-expanded="false">
+                    <img id="userAvatar" class="user__avatar" alt="avatar" />
+                    <span id="userNameShort" class="user__name">Usuario</span>
+                </button>
+                <div id="userDropdown" class="dropdown" role="menu" hidden>
+                    <button class="dropdown__item" data-user="settings">Ajustes de la cuenta</button>
+                    <button class="dropdown__item" data-user="tracking">Seguimiento de mi pedido</button>
+                    <button class="dropdown__item" data-user="purchases">Compras recientes</button>
+                    <button class="dropdown__item" data-user="logout">Cerrar sesión</button>
+                </div>
+            </div>
+            <button id="cartButton" class="button button--accent" aria-controls="cart" aria-expanded="false">🛒 Carrito <span id="cartCount" class="badge">0</span></button>
+        </nav>
+    </header>
+
+    <main class="container reveal">
+        <section class="filters reveal" aria-label="Filtros de tienda">
+            <div class="search">
+                <input id="searchInput" type="search" placeholder="Buscar modelos..." aria-label="Buscar modelos">
+            </div>
+            <div class="sort">
+                <label for="sortSelect" id="sortLabel">Ordenar:</label>
+                <select id="sortSelect" aria-label="Ordenar productos">
+                    <option value="popular" id="optPopular">Populares</option>
+                    <option value="price-asc" id="optAsc">Precio: menor a mayor</option>
+                    <option value="price-desc" id="optDesc">Precio: mayor a menor</option>
+                </select>
+            </div>
+        </section>
+
+        <section id="catalog" class="catalog stagger" aria-live="polite" aria-busy="false"></section>
+
+        <section id="reviews" class="reviews reveal" aria-label="Opiniones de clientes">
+            <h2 id="reviewsTitle">Reviews</h2>
+            <div class="reviews__grid stagger">
+                <article class="review">
+                    <header class="review__head">
+                        <span>⭐️⭐️⭐️⭐️⭐️</span>
+                        <strong>Camila</strong>
+                    </header>
+                    <p>Air Jordan 4 “Thunder” (Black/Yellow)
+“Comodidad y durabilidad en cada paso, con materiales que resaltan el diseño audaz.”</p>
+                </article>
+                <article class="review">
+                    <header class="review__head">
+                        <span>⭐️⭐️⭐️⭐️☆</span>
+                        <strong>Diego</strong>
+                    </header>
+                    <p>Air Jordan 4 “Red Thunder / Infrared”
+“Materiales duraderos y cómodos, con colores que destacan en cualquier outfit.”</p>
+                </article>
+                <article class="review">
+                    <header class="review__head">
+                        <span>⭐️⭐️⭐️⭐️⭐️</span>
+                        <strong>Sara</strong>
+                    </header>
+                    <p>ir Jordan 1 High OG “Chicago”
+“El cuero de calidad premium se siente resistente y cómodo, un clásico que nunca pasa de moda.”</p>
+                </article>
+            </div>
+            <form id="reviewForm" class="review-form">
+                <label id="yourReviewLabel">Tu reseña
+                    <textarea id="reviewText" rows="3" placeholder="Escribe tu experiencia..." required></textarea>
+                </label>
+                <div class="review-form__actions">
+                    <button type="submit" id="publishBtn" class="button button--primary">Publicar reseña</button>
+                    <span id="reviewHint" class="hint">Inicia sesión para publicar.</span>
+                </div>
+            </form>
+            <div class="socials">
+                <a class="social" href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">🐙</a>
+                <a class="social" href="mailto:tuemail@gmail.com" aria-label="Gmail">✉️</a>
+                <a class="social" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            </div>
+        </section>
+    </main>
+
+    <aside id="cart" class="cart" aria-hidden="true">
+        <header class="cart__header">
+            <h2>Tu carrito</h2>
+            <button id="closeCart" class="icon-button" aria-label="Cerrar carrito">✕</button>
+        </header>
+        <div id="cartItems" class="cart__items"></div>
+        <footer class="cart__footer">
+            <div class="cart__totals">
+                <span>Total</span>
+                <strong id="cartTotal">$0.00</strong>
+            </div>
+            <div class="payment">
+                <div class="pay-methods">
+                    <label><input type="radio" name="pay" value="card" checked> Tarjeta</label>
+                    <label><input type="radio" name="pay" value="paypal"> PayPal</label>
+                </div>
+                <div id="cardFields" class="card-fields">
+                    <input id="cardNumber" inputmode="numeric" placeholder="Número de tarjeta" maxlength="19">
+                    <div class="row">
+                        <input id="cardExp" inputmode="numeric" placeholder="MM/AA" maxlength="5">
+                        <input id="cardCvc" inputmode="numeric" placeholder="CVC" maxlength="4">
+                    </div>
+                </div>
+                <div id="paypalContainer" class="paypal" hidden>
+                    <div id="paypalButtons"></div>
+                </div>
+            </div>
+            <button id="checkout" class="button button--primary" disabled>Pagar</button>
+        </footer>
+    </aside>
+
+    <div id="cartBackdrop" class="backdrop" hidden></div>
+
+    <div id="toast" class="toast" hidden>Producto añadido al carrito</div>
+    <div id="successOverlay" class="success-overlay" hidden>
+        <div class="success-box">
+            <div class="check">✓</div>
+            <h3>Tu compra fue realizada con éxito</h3>
+            <p>En los próximos días te enviaremos un Gmail.</p>
+            <button id="closeSuccess" class="button">Cerrar</button>
+        </div>
+    </div>
+
+    <dialog id="authModal" class="modal">
+        <form method="dialog" class="modal__content">
+            <header class="modal__header">
+                <h3>Acceso</h3>
+                <button id="closeAuth" class="icon-button" aria-label="Cerrar">✕</button>
+            </header>
+            <div class="tabs">
+                <button type="button" class="tab tab--active" data-tab="login">Iniciar sesión</button>
+                <button type="button" class="tab" data-tab="register">Crear cuenta</button>
+            </div>
+            <div class="tabpanels">
+                <div class="tabpanel" data-panel="login">
+                    <label>Email
+                        <input id="loginEmail" type="email" placeholder="tú@correo.com" required>
+                    </label>
+                    <label>Contraseña
+                        <input id="loginPass" type="password" placeholder="••••••••" required>
+                    </label>
+                    <button type="submit" class="button button--primary">Entrar</button>
+                </div>
+                <div class="tabpanel" data-panel="register" hidden>
+                    <label>Nombre
+                        <input id="regName" type="text" placeholder="Tu nombre" required>
+                    </label>
+                    <label>Email
+                        <input id="regEmail" type="email" placeholder="tú@correo.com" required>
+                    </label>
+                    <label>Contraseña
+                        <input id="regPass" type="password" placeholder="••••••••" required>
+                    </label>
+                    <button type="submit" class="button button--primary">Crear cuenta</button>
+                </div>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="settingsModal" class="modal">
+        <form method="dialog" class="modal__content" id="settingsForm">
+            <header class="modal__header">
+                <h3>Ajustes de la cuenta</h3>
+                <button id="closeSettings" class="icon-button" aria-label="Cerrar">✕</button>
+            </header>
+            <div class="settings-grid">
+                <img id="avatarPreview" class="avatar-preview" alt="avatar preview" />
+                <div class="field">
+                    <label>Foto de perfil
+                        <input id="avatarInput" type="file" accept="image/*">
+                    </label>
+                    <label>Nombre completo
+                        <input id="fullNameInput" type="text" placeholder="Tu nombre completo">
+                    </label>
+                    <label>Nombre de usuario
+                        <input id="usernameInput" type="text" placeholder="Tu usuario">
+                    </label>
+                    <label>Email de contacto
+                        <input id="emailInput" type="email" placeholder="tú@correo.com">
+                    </label>
+                    <label>Teléfono
+                        <input id="phoneInput" type="tel" placeholder="+34 600 000 000">
+                    </label>
+                    <label>Dirección de envío
+                        <input id="addressInput" type="text" placeholder="Calle y número">
+                    </label>
+                    <div class="field" style="grid-template-columns: 1fr 1fr; display: grid; gap: 8px;">
+                        <label>Ciudad
+                            <input id="cityInput" type="text" placeholder="Ciudad">
+                        </label>
+                        <label>Código postal
+                            <input id="zipInput" type="text" placeholder="CP">
+                        </label>
+                    </div>
+                    <label>País
+                        <input id="countryInput" type="text" placeholder="País">
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="button button--primary">Guardar</button>
+        </form>
+    </dialog>
+
+    <dialog id="trackingModal" class="modal">
+        <div class="modal__content">
+            <header class="modal__header">
+                <h3>Seguimiento de mi pedido</h3>
+                <button id="closeTracking" class="icon-button" aria-label="Cerrar">✕</button>
+            </header>
+            <div id="trackingList" class="list"></div>
+        </div>
+    </dialog>
+
+    <dialog id="purchasesModal" class="modal">
+        <div class="modal__content">
+            <header class="modal__header">
+                <h3>Compras recientes</h3>
+                <button id="closePurchases" class="icon-button" aria-label="Cerrar">✕</button>
+            </header>
+            <div id="purchasesList" class="list"></div>
+        </div>
+    </dialog>
+
+    <dialog id="productModal" class="modal">
+        <div class="modal__content">
+            <header class="modal__header">
+                <h3 id="pmTitle">Producto</h3>
+                <button id="closeProduct" class="icon-button" aria-label="Cerrar">✕</button>
+            </header>
+            <div class="product-detail">
+                <div id="pmThumb" class="pd__thumb">👟</div>
+                <p id="pmDesc" class="pd__desc"></p>
+                <div class="pd__meta">
+                    <span id="pmPrice" class="price"></span>
+                    <div class="cart__qty">
+                        <button class="qty-btn" id="pmMinus">-</button>
+                        <span id="pmQty">1</span>
+                        <button class="qty-btn" id="pmPlus">+</button>
+                    </div>
+                </div>
+                <div class="payments">
+                    <span>Aceptamos:</span>
+                    <div class="payments__icons">
+                        <span class="pay">VISA</span>
+                        <span class="pay">Mastercard</span>
+                        <span class="pay">PayPal</span>
+                        <span class="pay">Bizum</span>
+                    </div>
+                </div>
+                <button id="pmAdd" class="button button--primary">Añadir al carrito</button>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="reviewModal" class="modal">
+        <form method="dialog" class="modal__content" id="reviewModalForm">
+            <header class="modal__header">
+                <h3>Deja tu reseña</h3>
+                <button id="closeReview" class="icon-button" aria-label="Cerrar">✕</button>
+            </header>
+            <div class="stars" id="stars">
+                <button type="button" data-star="1">★</button>
+                <button type="button" data-star="2">★</button>
+                <button type="button" data-star="3">★</button>
+                <button type="button" data-star="4">★</button>
+                <button type="button" data-star="5">★</button>
+            </div>
+            <label>Tu opinión
+                <textarea id="reviewModalText" rows="4" placeholder="Escribe tu experiencia..." required></textarea>
+            </label>
+            <button type="submit" class="button button--primary">Publicar</button>
+        </form>
+    </dialog>
+
+    <script id="paypalSDK" async defer src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+

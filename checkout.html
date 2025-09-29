@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — DaniShop</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <a href="index.html" class="brand__button" style="text-decoration:none;color:inherit">
+        <span class="logo">Z</span>
+        <h1 class="title">DaniShop</h1>
+      </a>
+    </div>
+  </header>
+  <main class="container" style="display:grid;gap:16px;grid-template-columns:2fr 1fr;align-items:start;">
+    <section class="card" style="padding:14px;">
+      <h2 style="margin:0 0 8px 0;">Datos de envío y contacto</h2>
+      <form id="checkoutForm" class="field" style="display:grid;gap:10px;">
+        <div style="display:grid;gap:8px;grid-template-columns:1fr 1fr;">
+          <label>Nombre completo
+            <input id="coFullName" type="text" required>
+          </label>
+          <label>Email
+            <input id="coEmail" type="email" required>
+          </label>
+        </div>
+        <div style="display:grid;gap:8px;grid-template-columns:1fr 1fr;">
+          <label>Teléfono
+            <input id="coPhone" type="tel" required>
+          </label>
+          <label>País
+            <input id="coCountry" type="text" required>
+          </label>
+        </div>
+        <label>Dirección
+          <input id="coAddress" type="text" required>
+        </label>
+        <div style="display:grid;gap:8px;grid-template-columns:1fr 1fr;">
+          <label>Ciudad
+            <input id="coCity" type="text" required>
+          </label>
+          <label>Código postal
+            <input id="coZip" type="text" required>
+          </label>
+        </div>
+
+        <h3 style="margin:8px 0 0 0;">Pago</h3>
+        <div class="payment">
+          <div class="pay-methods">
+            <label><input type="radio" name="pay" value="card" checked> Tarjeta</label>
+            <label><input type="radio" name="pay" value="paypal"> PayPal</label>
+          </div>
+          <div id="coCardFields" class="card-fields">
+            <input id="coCardNumber" inputmode="numeric" placeholder="Número de tarjeta" maxlength="19" required>
+            <div class="row">
+              <input id="coCardExp" inputmode="numeric" placeholder="MM/AA" maxlength="5" required>
+              <input id="coCardCvc" inputmode="numeric" placeholder="CVC" maxlength="4" required>
+            </div>
+          </div>
+          <div id="coPaypal" class="paypal" hidden>
+            <div id="coPaypalButtons"></div>
+          </div>
+        </div>
+
+        <button id="coPay" class="button button--primary" type="submit">Realizar compra</button>
+      </form>
+    </section>
+
+    <aside class="card" style="padding:14px;">
+      <h2 style="margin:0 0 8px 0;">Resumen</h2>
+      <div id="coItems" class="list"></div>
+      <div style="display:flex;justify-content:space-between;margin-top:10px;">
+        <span>Total</span>
+        <strong id="coTotal">$0.00</strong>
+      </div>
+    </aside>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+  <div id="successOverlay" class="success-overlay">
+    <div class="success-box">
+      <div class="check">✓</div>
+      <h3>Tu compra fue realizada con éxito</h3>
+      <p>En los próximos días te enviaremos un Gmail.</p>
+      <a href="index.html" class="button">Volver a la tienda</a>
+    </div>
+  </div>
+
+  <script id="paypalSDK" async defer src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+  <script src="checkout.js"></script>
+</body>
+</html>
+
+
+
