@@ -4,10 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>42 Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="modern-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="firebase-styles.css">
+    
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#333333',
+            secondary: '#666666',
+            accent: '#4CAF50'
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+    </script>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
+    
+    <!-- Nuestros scripts -->
+    <script src="firebase-config.js" type="module"></script>
+    <script src="auth.js" type="module"></script>
+    <script src="shop.js" type="module"></script>
+    <script src="orders.js" type="module"></script>
 </head>
 <body>
     <header class="header reveal">
@@ -16,6 +49,21 @@
                 <span class="logo">42</span>
                 <h1 class="title">Shop</h1>
             </button>
+            
+            <!-- Elementos de autenticación -->
+            <div class="auth-buttons">
+                <button id="loginBtn" class="auth-btn">Iniciar Sesión</button>
+                <button id="registerBtn" class="auth-btn">Registrarse</button>
+                <button id="logoutBtn" class="auth-btn" style="display: none;">Cerrar Sesión</button>
+                <span id="userInfo" class="user-info" style="display: none;"></span>
+            </div>
+            
+            <!-- Carrito -->
+            <div class="cart-icon">
+                <button id="cartButton" class="cart-btn">
+                    🛒 <span id="cartCount">0</span>
+                </button>
+            </div>
             <div id="brandDropdown" class="dropdown" role="menu" hidden>
                 <button class="dropdown__item" data-nav="inicio">Inicio</button>
                 <button class="dropdown__item" data-nav="auth">Crear cuenta / Iniciar sesión</button>
@@ -307,7 +355,53 @@
 
     <script id="paypalSDK" async defer src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
 
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Registrarse</h2>
+            <form id="registerForm">
+                <input type="text" id="registerName" placeholder="Nombre" required>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <input type="password" id="registerPassword" placeholder="Contraseña" required>
+                <button type="submit">Registrarse</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal del Carrito -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Tu Carrito</h2>
+            <div id="cart-container"></div>
+        </div>
+    </div>
+
+    <!-- Sección de Historial de Pedidos -->
+    <div id="orderHistoryModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Historial de Pedidos</h2>
+            <div id="orders-history"></div>
+        </div>
+    </div>
+
     <script src="app.js"></script>
+    <script src="app-firebase.js" type="module"></script>
 </body>
 </html>
 
