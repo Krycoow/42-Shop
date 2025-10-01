@@ -1,0 +1,313 @@
+/* DESHABILITAR TODAS LAS ANIMACIONES PROBLEMÁTICAS */
+
+/* Deshabilitar todas las animaciones de productos */
+.card,
+.card *,
+.card__image,
+.card__image *,
+.card__content,
+.card__content *,
+.card__title,
+.card__price,
+.card__actions,
+.card__actions *,
+.card__actions .button {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+    will-change: auto !important;
+}
+
+/* Deshabilitar efectos hover problemáticos */
+.card:hover,
+.card:hover *,
+.card:hover .card__image,
+.card:hover .card__image *,
+.card:hover .card__content,
+.card:hover .card__content *,
+.card:hover .card__title,
+.card:hover .card__price,
+.card:hover .card__actions,
+.card:hover .card__actions *,
+.card:hover .card__actions .button {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+    will-change: auto !important;
+}
+
+/* Deshabilitar animaciones de entrada */
+.card.animate-in,
+.card.animate-in * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+/* Deshabilitar efectos de zoom */
+.zoom-active,
+.zoom-active * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+}
+
+/* Deshabilitar animaciones de partículas */
+.particle,
+.particle *,
+.floating-particles,
+.floating-particles * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Deshabilitar animaciones de estrellas */
+.star,
+.star *,
+.stars-display,
+.stars-display * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Deshabilitar animaciones de botones */
+.button,
+.button *,
+.btn,
+.btn * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Deshabilitar animaciones de modal */
+.modal,
+.modal *,
+.product-modal,
+.product-modal * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Deshabilitar animaciones de carrito */
+.cart,
+.cart *,
+.cart__items,
+.cart__items * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Deshabilitar todas las keyframes */
+@keyframes * {
+    from, to, 0%, 100% {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        filter: none !important;
+    }
+}
+
+/* Asegurar que no hay animaciones en ningún elemento */
+* {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+}
+
+/* Deshabilitar animaciones específicas por nombre */
+@keyframes productZoom,
+@keyframes miniZoom,
+@keyframes dramaticZoom,
+@keyframes zoomPulse,
+@keyframes particleFloat,
+@keyframes particleFloat0,
+@keyframes particleFloat1,
+@keyframes particleFloat2,
+@keyframes particleFloat3,
+@keyframes particleFloat4,
+@keyframes particleFloat5,
+@keyframes cardSlideIn,
+@keyframes catalogFadeIn,
+@keyframes gentleFadeIn,
+@keyframes borderGlow,
+@keyframes softBorderGlow,
+@keyframes pricePulse,
+@keyframes gentlePricePulse,
+@keyframes pulse,
+@keyframes starHover,
+@keyframes moveToCart,
+@keyframes buttonClick,
+@keyframes numberChange {
+    0%, 100%, from, to {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        filter: none !important;
+    }
+}
+
+/* Deshabilitar todas las animaciones de productos */
+.card,
+.card *,
+.card__image,
+.card__image *,
+.card__content,
+.card__content *,
+.card__title,
+.card__price,
+.card__actions,
+.card__actions *,
+.card__actions .button {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+    will-change: auto !important;
+}
+
+/* Deshabilitar efectos hover problemáticos */
+.card:hover,
+.card:hover *,
+.card:hover .card__image,
+.card:hover .card__image *,
+.card:hover .card__content,
+.card:hover .card__content *,
+.card:hover .card__title,
+.card:hover .card__price,
+.card:hover .card__actions,
+.card:hover .card__actions *,
+.card:hover .card__actions .button {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+    will-change: auto !important;
+}
+
+/* Deshabilitar animaciones de entrada */
+.card.animate-in,
+.card.animate-in * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+/* Deshabilitar efectos de zoom */
+.zoom-active,
+.zoom-active * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+}
+
+/* Deshabilitar animaciones de partículas */
+.particle,
+.particle *,
+.floating-particles,
+.floating-particles * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Deshabilitar animaciones de estrellas */
+.star,
+.star *,
+.stars-display,
+.stars-display * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Deshabilitar animaciones de botones */
+.button,
+.button *,
+.btn,
+.btn * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Deshabilitar animaciones de modal */
+.modal,
+.modal *,
+.product-modal,
+.product-modal * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Deshabilitar animaciones de carrito */
+.cart,
+.cart *,
+.cart__items,
+.cart__items * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Deshabilitar todas las keyframes */
+@keyframes * {
+    from, to, 0%, 100% {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        filter: none !important;
+    }
+}
+
+/* Asegurar que no hay animaciones en ningún elemento */
+* {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+}
+
+/* Deshabilitar animaciones específicas por nombre */
+@keyframes productZoom,
+@keyframes miniZoom,
+@keyframes dramaticZoom,
+@keyframes zoomPulse,
+@keyframes particleFloat,
+@keyframes particleFloat0,
+@keyframes particleFloat1,
+@keyframes particleFloat2,
+@keyframes particleFloat3,
+@keyframes particleFloat4,
+@keyframes particleFloat5,
+@keyframes cardSlideIn,
+@keyframes catalogFadeIn,
+@keyframes gentleFadeIn,
+@keyframes borderGlow,
+@keyframes softBorderGlow,
+@keyframes pricePulse,
+@keyframes gentlePricePulse,
+@keyframes pulse,
+@keyframes starHover,
+@keyframes moveToCart,
+@keyframes buttonClick,
+@keyframes numberChange {
+    0%, 100%, from, to {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+        filter: none !important;
+    }
+}

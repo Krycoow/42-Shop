@@ -1,0 +1,11 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Update CSS",
+			"type": "shell",
+			"command": "echo '' > styles.css",
+			"group": "build"
+		}
+	]
+}

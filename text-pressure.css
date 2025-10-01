@@ -1,0 +1,275 @@
+/* Estilos para el efecto TextPressure */
+
+.text-pressure-container {
+    position: relative;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 20, 0, 0.8));
+    border-radius: 20px;
+    margin: 2rem 0;
+    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.3);
+    border: 2px solid rgba(0, 255, 0, 0.2);
+}
+
+.text-pressure-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(0, 255, 0, 0.05) 25%,
+        transparent 50%,
+        rgba(0, 255, 0, 0.03) 75%,
+        transparent 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.text-pressure-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: #00ff00;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 20px #00ff00;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 1rem;
+}
+
+.text-pressure-text:hover {
+    text-shadow: 0 0 30px #00ff00, 0 0 60px #00ff00;
+}
+
+/* Efectos de partículas */
+.text-pressure-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #00ff00;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+/* Animaciones de partículas */
+@keyframes particleFloat0 {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translateY(-20px) rotate(180deg); 
+        opacity: 1; 
+    }
+}
+
+@keyframes particleFloat1 {
+    0%, 100% { 
+        transform: translateX(0px) rotate(0deg); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translateX(20px) rotate(180deg); 
+        opacity: 1; 
+    }
+}
+
+@keyframes particleFloat2 {
+    0%, 100% { 
+        transform: translate(0px, 0px) rotate(0deg); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translate(15px, -15px) rotate(180deg); 
+        opacity: 1; 
+    }
+}
+
+@keyframes particleFloat3 {
+    0%, 100% { 
+        transform: translateY(0px) scale(1); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translateY(-25px) scale(1.2); 
+        opacity: 1; 
+    }
+}
+
+@keyframes particleFloat4 {
+    0%, 100% { 
+        transform: translateX(0px) scale(1); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translateX(-20px) scale(1.2); 
+        opacity: 1; 
+    }
+}
+
+@keyframes particleFloat5 {
+    0%, 100% { 
+        transform: translate(0px, 0px) scale(1); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translate(-15px, 15px) scale(1.2); 
+        opacity: 1; 
+    }
+}
+
+@keyframes particleFloat6 {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translateY(20px) rotate(-180deg); 
+        opacity: 1; 
+    }
+}
+
+@keyframes particleFloat7 {
+    0%, 100% { 
+        transform: translateX(0px) rotate(0deg); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translateX(-25px) rotate(-180deg); 
+        opacity: 1; 
+    }
+}
+
+@keyframes particleFloat8 {
+    0%, 100% { 
+        transform: translate(0px, 0px) rotate(0deg); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translate(20px, 20px) rotate(-180deg); 
+        opacity: 1; 
+    }
+}
+
+@keyframes particleFloat9 {
+    0%, 100% { 
+        transform: translateY(0px) scale(1); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translateY(25px) scale(0.8); 
+        opacity: 1; 
+    }
+}
+
+@keyframes particleFloat10 {
+    0%, 100% { 
+        transform: translateX(0px) scale(1); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translateX(25px) scale(0.8); 
+        opacity: 1; 
+    }
+}
+
+@keyframes particleFloat11 {
+    0%, 100% { 
+        transform: translate(0px, 0px) scale(1); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translate(-20px, -20px) scale(0.8); 
+        opacity: 1; 
+    }
+}
+
+@keyframes particleFloat12 {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translateY(-30px) rotate(360deg); 
+        opacity: 1; 
+    }
+}
+
+@keyframes particleFloat13 {
+    0%, 100% { 
+        transform: translateX(0px) rotate(0deg); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translateX(30px) rotate(360deg); 
+        opacity: 1; 
+    }
+}
+
+@keyframes particleFloat14 {
+    0%, 100% { 
+        transform: translate(0px, 0px) rotate(0deg); 
+        opacity: 0.3; 
+    }
+    50% { 
+        transform: translate(25px, -25px) rotate(360deg); 
+        opacity: 1; 
+    }
+}
+
+/* Efecto ripple */
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.text-pressure-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 255, 0, 0.4), transparent);
+    transform: scale(0);
+    animation: ripple 0.6s ease-out;
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .text-pressure-container {
+        height: 200px;
+        margin: 1rem 0;
+    }
+    
+    .text-pressure-text {
+        font-size: 32px;
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-pressure-container {
+        height: 150px;
+    }
+    
+    .text-pressure-text {
+        font-size: 24px;
+    }
+}
+
+

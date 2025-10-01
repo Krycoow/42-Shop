@@ -1,0 +1,406 @@
+/* Estilos para la sección ¿Por qué somos #1? */
+
+.why-we-are-number-one {
+    padding: 6rem 2rem;
+    background: linear-gradient(135deg, 
+        rgba(0, 0, 0, 0.9) 0%, 
+        rgba(20, 20, 20, 0.95) 50%, 
+        rgba(0, 0, 0, 0.9) 100%);
+    border-top: 3px solid rgba(0, 255, 0, 0.3);
+    border-bottom: 3px solid rgba(0, 255, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.why-we-are-number-one::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(0, 255, 0, 0.1), transparent),
+                radial-gradient(circle at 70% 80%, rgba(0, 255, 0, 0.05), transparent);
+    animation: whyBackgroundPulse 8s ease-in-out infinite;
+}
+
+.why-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.why-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.why-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #00ff00;
+    text-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
+    margin-bottom: 1rem;
+    animation: whyTitleGlow 3s ease-in-out infinite alternate;
+}
+
+.why-subtitle {
+    font-size: 1.3rem;
+    color: #ffffff;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+}
+
+.why-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, 
+        rgba(0, 255, 0, 0.2) 0%, 
+        rgba(0, 0, 0, 0.8) 100%);
+    border: 2px solid rgba(0, 255, 0, 0.5);
+    border-radius: 25px;
+    padding: 1rem 2rem;
+    color: #00ff00;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 25px rgba(0, 255, 0, 0.3);
+    animation: whyBadgeFloat 4s ease-in-out infinite;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.why-card {
+    background: linear-gradient(135deg, 
+        rgba(0, 0, 0, 0.8) 0%, 
+        rgba(20, 20, 20, 0.9) 100%);
+    border: 2px solid rgba(0, 255, 0, 0.3);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.why-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(0, 255, 0, 0.6);
+    box-shadow: 0 20px 40px rgba(0, 255, 0, 0.3);
+}
+
+.why-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(0, 255, 0, 0.05) 0%, 
+        transparent 50%, 
+        rgba(0, 255, 0, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.why-card:hover::before {
+    opacity: 1;
+}
+
+.why-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 15px rgba(0, 255, 0, 0.6));
+    animation: whyIconFloat 3s ease-in-out infinite;
+}
+
+.why-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #00ff00;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.4);
+}
+
+.why-card-description {
+    color: #ffffff;
+    opacity: 0.9;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.why-badge-small {
+    display: inline-block;
+    background: linear-gradient(135deg, 
+        rgba(255, 71, 87, 0.2) 0%, 
+        rgba(255, 71, 87, 0.1) 100%);
+    border: 1px solid rgba(255, 71, 87, 0.5);
+    border-radius: 15px;
+    padding: 0.5rem 1rem;
+    color: #ff4757;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.why-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.stat-item {
+    text-align: center;
+    background: rgba(0, 255, 0, 0.05);
+    border: 2px solid rgba(0, 255, 0, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    background: rgba(0, 255, 0, 0.1);
+    border-color: rgba(0, 255, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #00ff00;
+    text-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.why-cta {
+    text-align: center;
+    background: rgba(0, 255, 0, 0.05);
+    border: 2px solid rgba(0, 255, 0, 0.3);
+    border-radius: 25px;
+    padding: 3rem;
+}
+
+.why-cta h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #00ff00;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+.why-cta p {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.why-btn {
+    background: linear-gradient(135deg, 
+        #00ff00 0%, 
+        #00cc00 100%);
+    border: 2px solid rgba(0, 255, 0, 0.8);
+    border-radius: 20px;
+    color: #000000;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 1.2rem 2.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 255, 0, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.why-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 255, 0, 0.6);
+}
+
+.btn-icon {
+    font-size: 1.5rem;
+    animation: whyBtnIconPulse 2s ease-in-out infinite;
+}
+
+.urgency-text {
+    color: #ff4757;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    animation: whyUrgencyBlink 2s ease-in-out infinite;
+}
+
+/* Animaciones */
+@keyframes whyBackgroundPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+@keyframes whyTitleGlow {
+    0% { 
+        text-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
+        transform: scale(1);
+    }
+    100% { 
+        text-shadow: 0 0 50px rgba(0, 255, 0, 0.8);
+        transform: scale(1.02);
+    }
+}
+
+@keyframes whyBadgeFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes whyIconFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(5deg); }
+}
+
+@keyframes whyBtnIconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+@keyframes whyUrgencyBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .why-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .why-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .why-we-are-number-one {
+        padding: 4rem 1rem;
+    }
+    
+    .why-title {
+        font-size: 2.5rem;
+    }
+    
+    .why-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .why-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .why-card {
+        padding: 1.5rem;
+    }
+    
+    .why-icon {
+        font-size: 3rem;
+    }
+    
+    .why-card-title {
+        font-size: 1.3rem;
+    }
+    
+    .why-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .stat-item {
+        padding: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .why-cta {
+        padding: 2rem;
+    }
+    
+    .why-cta h3 {
+        font-size: 1.5rem;
+    }
+    
+    .why-btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .why-title {
+        font-size: 2rem;
+    }
+    
+    .why-badge {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .why-card {
+        padding: 1rem;
+    }
+    
+    .why-icon {
+        font-size: 2.5rem;
+    }
+    
+    .why-card-title {
+        font-size: 1.1rem;
+    }
+    
+    .why-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .why-cta {
+        padding: 1.5rem;
+    }
+    
+    .why-cta h3 {
+        font-size: 1.3rem;
+    }
+    
+    .why-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}

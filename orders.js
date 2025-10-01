@@ -46,7 +46,7 @@ export class Orders {
                 <p class="order-total">Total: ${order.total}€</p>
             `;
             
-            container.appendChild(orderElement);
+            container.appendChild(orderElement)
         });
     }
 }

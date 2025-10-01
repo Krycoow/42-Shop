@@ -3,89 +3,299 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout — DaniShop</title>
+  <title>Checkout — 42Shop</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="checkout-styles.css">
 </head>
-<body>
-  <header class="header">
-    <div class="brand">
-      <a href="index.html" class="brand__button" style="text-decoration:none;color:inherit">
-        <span class="logo">42</span>
-        <h1 class="title">42Shop</h1>
+<body class="checkout-page">
+  <header class="checkout-header">
+    <div class="checkout-brand">
+      <a href="index.html" class="brand__button">
+        <span class="logo" style="color:#00ff00;">42</span>
+        <h1 class="title" style="color:#fff;">shop</h1>
       </a>
     </div>
+    <div class="checkout-progress">
+      <div class="progress-step active">
+        <div class="step-number">1</div>
+        <span>Datos</span>
+      </div>
+      <div class="progress-step">
+        <div class="step-number">2</div>
+        <span>Pago</span>
+      </div>
+      <div class="progress-step">
+        <div class="step-number">3</div>
+        <span>Confirmación</span>
+      </div>
+    </div>
   </header>
-  <main class="container" style="display:grid;gap:16px;grid-template-columns:2fr 1fr;align-items:start;">
-    <section class="card" style="padding:14px;">
-      <h2 style="margin:0 0 8px 0;">Datos de envío y contacto</h2>
-      <form id="checkoutForm" class="field" style="display:grid;gap:10px;">
-        <div style="display:grid;gap:8px;grid-template-columns:1fr 1fr;">
-          <label>Nombre completo
-            <input id="coFullName" type="text" required>
-          </label>
-          <label>Email
-            <input id="coEmail" type="email" required>
-          </label>
-        </div>
-        <div style="display:grid;gap:8px;grid-template-columns:1fr 1fr;">
-          <label>Teléfono
-            <input id="coPhone" type="tel" required>
-          </label>
-          <label>País
-            <input id="coCountry" type="text" required>
-          </label>
-        </div>
-        <label>Dirección
-          <input id="coAddress" type="text" required>
-        </label>
-        <div style="display:grid;gap:8px;grid-template-columns:1fr 1fr;">
-          <label>Ciudad
-            <input id="coCity" type="text" required>
-          </label>
-          <label>Código postal
-            <input id="coZip" type="text" required>
-          </label>
-        </div>
-
-        <h3 style="margin:8px 0 0 0;">Pago</h3>
-        <div class="payment">
-          <div class="pay-methods">
-            <label><input type="radio" name="pay" value="card" checked> Tarjeta</label>
-            <label><input type="radio" name="pay" value="paypal"> PayPal</label>
+  <main class="checkout-main">
+    <div class="checkout-container">
+      <section class="checkout-form-section">
+        <div class="form-step active" id="step1">
+          <div class="step-header">
+            <h2>📋 Datos de envío y contacto</h2>
+            <p>Completa tu información para el envío</p>
           </div>
-          <div id="coCardFields" class="card-fields">
-            <input id="coCardNumber" inputmode="numeric" placeholder="Número de tarjeta" maxlength="19" required>
-            <div class="row">
-              <input id="coCardExp" inputmode="numeric" placeholder="MM/AA" maxlength="5" required>
-              <input id="coCardCvc" inputmode="numeric" placeholder="CVC" maxlength="4" required>
+          
+          <form id="checkoutForm" class="checkout-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="coFullName">
+                  <span class="label-icon">👤</span>
+                  Nombre completo
+                </label>
+                <input id="coFullName" type="text" required placeholder="Tu nombre completo">
+              </div>
+              <div class="form-group">
+                <label for="coEmail">
+                  <span class="label-icon">📧</span>
+                  Email
+                </label>
+                <input id="coEmail" type="email" required placeholder="tu@email.com">
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="coPhone">
+                  <span class="label-icon">📱</span>
+                  Teléfono
+                </label>
+                <input id="coPhone" type="tel" required placeholder="+34 123 456 789">
+              </div>
+              <div class="form-group">
+                <label for="coCountry">
+                  <span class="label-icon">🌍</span>
+                  País
+                </label>
+                <select id="coCountry" required>
+                  <option value="">Selecciona tu país</option>
+                  <option value="ES">España</option>
+                  <option value="FR">Francia</option>
+                  <option value="IT">Italia</option>
+                  <option value="DE">Alemania</option>
+                  <option value="US">Estados Unidos</option>
+                  <option value="UK">Reino Unido</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="coAddress">
+                <span class="label-icon">🏠</span>
+                Dirección completa
+              </label>
+              <input id="coAddress" type="text" required placeholder="Calle, número, piso, puerta">
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="coCity">
+                  <span class="label-icon">🏙️</span>
+                  Ciudad
+                </label>
+                <input id="coCity" type="text" required placeholder="Tu ciudad">
+              </div>
+              <div class="form-group">
+                <label for="coZip">
+                  <span class="label-icon">📮</span>
+                  Código postal
+                </label>
+                <input id="coZip" type="text" required placeholder="12345">
+              </div>
+            </div>
+            
+            <button type="button" class="btn-next" onclick="nextStep()">
+              <span>Continuar al pago</span>
+              <span class="btn-icon">→</span>
+            </button>
+          </form>
+        </div>
+        
+        <div class="form-step" id="step2">
+          <div class="step-header">
+            <h2>💳 Método de pago</h2>
+            <p>Selecciona tu forma de pago preferida</p>
+          </div>
+          
+          <div class="payment-section">
+            <div class="payment-methods">
+              <div class="payment-option">
+                <input type="radio" name="pay" value="card" id="cardPayment" checked>
+                <label for="cardPayment">
+                  <div class="payment-icon">💳</div>
+                  <div class="payment-info">
+                    <span class="payment-title">Tarjeta de crédito/débito</span>
+                    <span class="payment-desc">Visa, Mastercard, American Express</span>
+                  </div>
+                </label>
+              </div>
+              
+              <div class="payment-option">
+                <input type="radio" name="pay" value="paypal" id="paypalPayment">
+                <label for="paypalPayment">
+                  <div class="payment-icon">🅿️</div>
+                  <div class="payment-info">
+                    <span class="payment-title">PayPal</span>
+                    <span class="payment-desc">Pago seguro con PayPal</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+            
+            <div id="coCardFields" class="card-fields">
+              <div class="card-input-group">
+                <label for="coCardNumber">Número de tarjeta</label>
+                <input id="coCardNumber" type="text" placeholder="1234 5678 9012 3456" maxlength="19">
+              </div>
+              
+              <div class="card-row">
+                <div class="card-input-group">
+                  <label for="coCardExp">Fecha de expiración</label>
+                  <input id="coCardExp" type="text" placeholder="MM/AA" maxlength="5">
+                </div>
+                <div class="card-input-group">
+                  <label for="coCardCvc">CVC</label>
+                  <input id="coCardCvc" type="text" placeholder="123" maxlength="4">
+                </div>
+              </div>
+            </div>
+            
+            <div id="coPaypal" class="paypal-section" hidden>
+              <div id="coPaypalButtons"></div>
+            </div>
+            
+            <div class="step-actions">
+              <button type="button" class="btn-back" onclick="prevStep()">
+                <span class="btn-icon">←</span>
+                <span>Volver</span>
+              </button>
+              <button type="button" class="btn-next" onclick="nextStep()">
+                <span>Revisar pedido</span>
+                <span class="btn-icon">→</span>
+              </button>
             </div>
           </div>
-          <div id="coPaypal" class="paypal" hidden>
-            <div id="coPaypalButtons"></div>
+        </div>
+        
+        <div class="form-step" id="step3">
+          <div class="step-header">
+            <h2>✅ Confirmar pedido</h2>
+            <p>Revisa tu pedido antes de finalizar</p>
+          </div>
+          
+          <div class="order-summary">
+            <div class="summary-section">
+              <h3>📦 Resumen del pedido</h3>
+              <div id="coItems" class="order-items"></div>
+            </div>
+            
+            <div class="summary-section">
+              <h3>🚚 Datos de envío</h3>
+              <div class="shipping-info" id="shippingInfo"></div>
+            </div>
+            
+            <div class="summary-section">
+              <h3>💳 Método de pago</h3>
+              <div class="payment-info" id="paymentInfo"></div>
+            </div>
+          </div>
+          
+          <div class="step-actions">
+            <button type="button" class="btn-back" onclick="prevStep()">
+              <span class="btn-icon">←</span>
+              <span>Volver</span>
+            </button>
+            <button type="submit" class="btn-complete" id="coPay">
+              <span>Finalizar compra</span>
+              <span class="btn-icon">✓</span>
+            </button>
           </div>
         </div>
+      </section>
 
-        <button id="coPay" class="button button--primary" type="submit">Realizar compra</button>
-      </form>
-    </section>
-
-    <aside class="card" style="padding:14px;">
-      <h2 style="margin:0 0 8px 0;">Resumen</h2>
-      <div id="coItems" class="list"></div>
-      <div style="display:flex;justify-content:space-between;margin-top:10px;">
-        <span>Total</span>
-        <strong id="coTotal">$0.00</strong>
-      </div>
-    </aside>
+      <aside class="checkout-sidebar">
+        <div class="sidebar-card">
+          <h3>🛒 Resumen del pedido</h3>
+          <div id="coItems" class="sidebar-items"></div>
+          <div class="sidebar-total">
+            <div class="total-line">
+              <span>Subtotal</span>
+              <span id="subtotal">€0.00</span>
+            </div>
+            <div class="total-line">
+              <span>Envío</span>
+              <span id="shipping">€5.99</span>
+            </div>
+            <div class="total-line total-final">
+              <span>Total</span>
+              <span id="coTotal">€0.00</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="sidebar-card">
+          <h3>🔒 Compra segura</h3>
+          <div class="security-features">
+            <div class="security-item">
+              <span class="security-icon">🛡️</span>
+              <span>SSL Encriptado</span>
+            </div>
+            <div class="security-item">
+              <span class="security-icon">🔐</span>
+              <span>Datos protegidos</span>
+            </div>
+            <div class="security-item">
+              <span class="security-icon">✅</span>
+              <span>Garantía de devolución</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
   </main>
 
-  <div id="toast" class="toast" hidden></div>
+  <!-- Toast notifications -->
+  <div id="toast" class="toast"></div>
+  
+  <!-- Success popup -->
   <div id="successOverlay" class="success-overlay">
-    <div class="success-box">
-      <div class="check">✓</div>
-      <h3>Tu compra fue realizada con éxito</h3>
-      <p>En los próximos días te enviaremos un Gmail.</p>
-      <a href="index.html" class="button">Volver a la tienda</a>
+    <div class="success-popup">
+      <div class="success-animation">
+        <div class="check-circle">
+          <div class="check-mark">✓</div>
+        </div>
+        <div class="success-particles"></div>
+      </div>
+      <h2>¡Compra realizada con éxito!</h2>
+      <p>Tu pedido ha sido procesado correctamente</p>
+      <div class="success-details">
+        <div class="detail-item">
+          <span class="detail-icon">📧</span>
+          <span>Te hemos enviado un email de confirmación</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-icon">📦</span>
+          <span>Tu pedido será enviado en 1-2 días laborables</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-icon">🚚</span>
+          <span>Recibirás un SMS con el código de seguimiento</span>
+        </div>
+      </div>
+      <div class="success-actions">
+        <button class="btn-primary" onclick="goToShop()">
+          <span>Volver a la tienda</span>
+          <span class="btn-icon">🏪</span>
+        </button>
+        <button class="btn-secondary" onclick="viewOrder()">
+          <span>Ver mi pedido</span>
+          <span class="btn-icon">📋</span>
+        </button>
+      </div>
     </div>
   </div>
 

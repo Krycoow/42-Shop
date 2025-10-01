@@ -1,0 +1,298 @@
+/* Estilos para productos destacados */
+
+.featured-products-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, 
+        rgba(0, 0, 0, 0.8) 0%, 
+        rgba(20, 20, 20, 0.9) 50%, 
+        rgba(0, 0, 0, 0.8) 100%);
+    border-top: 3px solid rgba(0, 255, 0, 0.3);
+    border-bottom: 3px solid rgba(0, 255, 0, 0.3);
+}
+
+.featured-products-section .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.featured-products-section .section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #00ff00;
+    text-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    margin-bottom: 1rem;
+}
+
+.featured-products-section .section-header p {
+    font-size: 1.2rem;
+    color: #ffffff;
+    opacity: 0.8;
+}
+
+/* Tabs de categorías */
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.1) 0%, 
+        rgba(0, 0, 0, 0.8) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tab-button:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0, 255, 0, 0.5);
+    box-shadow: 0 8px 25px rgba(0, 255, 0, 0.2);
+}
+
+.tab-button.active {
+    background: linear-gradient(135deg, 
+        #00ff00 0%, 
+        #00cc00 100%);
+    border-color: rgba(0, 255, 0, 0.8);
+    color: #000000;
+    box-shadow: 0 8px 25px rgba(0, 255, 0, 0.4);
+}
+
+/* Contenido de categorías */
+.category-content {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.category-content.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Grid de productos destacados */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featured-item {
+    background: linear-gradient(135deg, 
+        rgba(0, 0, 0, 0.9) 0%, 
+        rgba(20, 20, 20, 0.95) 100%);
+    border: 2px solid rgba(0, 255, 0, 0.3);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.featured-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(0, 255, 0, 0.6);
+    box-shadow: 0 20px 40px rgba(0, 255, 0, 0.3);
+}
+
+.featured-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: linear-gradient(135deg, #ff4757, #ff3742);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0 15px 0 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+}
+
+.featured-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.5));
+}
+
+.featured-item h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #00ff00;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.featured-item p {
+    color: #ffffff;
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+.featured-price {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.old-price {
+    font-size: 1.2rem;
+    color: #ff4757;
+    text-decoration: line-through;
+    margin-left: 0.5rem;
+    opacity: 0.7;
+}
+
+.featured-btn {
+    background: linear-gradient(135deg, 
+        rgba(0, 255, 0, 0.1) 0%, 
+        rgba(0, 0, 0, 0.8) 100%);
+    border: 2px solid rgba(0, 255, 0, 0.5);
+    border-radius: 12px;
+    color: #00ff00;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: 100%;
+}
+
+.featured-btn:hover {
+    background: linear-gradient(135deg, 
+        #00ff00 0%, 
+        #00cc00 100%);
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 255, 0, 0.4);
+}
+
+/* Animaciones */
+@keyframes featuredSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.featured-item {
+    animation: featuredSlideIn 0.6s ease-out;
+}
+
+.featured-item:nth-child(1) { animation-delay: 0.1s; }
+.featured-item:nth-child(2) { animation-delay: 0.2s; }
+.featured-item:nth-child(3) { animation-delay: 0.3s; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .featured-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .featured-item {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .featured-products-section {
+        padding: 3rem 1rem;
+    }
+    
+    .featured-products-section .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .category-tabs {
+        gap: 0.8rem;
+    }
+    
+    .tab-button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .featured-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .featured-item {
+        padding: 1.2rem;
+    }
+    
+    .featured-icon {
+        font-size: 2.5rem;
+    }
+    
+    .featured-item h3 {
+        font-size: 1.3rem;
+    }
+    
+    .featured-price {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .featured-products-section .section-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .featured-products-section .section-header p {
+        font-size: 1rem;
+    }
+    
+    .tab-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .featured-item {
+        padding: 1rem;
+    }
+    
+    .featured-icon {
+        font-size: 2rem;
+    }
+    
+    .featured-item h3 {
+        font-size: 1.2rem;
+    }
+    
+    .featured-price {
+        font-size: 1.3rem;
+    }
+    
+    .featured-btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}

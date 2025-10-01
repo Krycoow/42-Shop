@@ -1,0 +1,621 @@
+/* Arreglar colores del header para que sea gris como el resto de la página */
+
+/* Header principal - cambiar de verde a gris */
+.header {
+    background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 100%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 10px 60px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Logo del header - cambiar el verde a gris */
+.header__logo span .green {
+    color: #cccccc !important;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3)) !important;
+}
+
+.header__logo span .white {
+    color: #ffffff !important;
+    text-shadow: 0 1px 0 #000, 0 0 8px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Botones del header - cambiar de verde a gris */
+.button--primary {
+    background: linear-gradient(135deg, #444444, #555555) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.button--primary:hover {
+    background: linear-gradient(135deg, #555555, #666666) !important;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1) !important;
+}
+
+.button--secondary {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #cccccc !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.button--secondary:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Selectores de idioma y moneda - cambiar de verde a gris */
+.selector {
+    background-color: #2a2a2a !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+}
+
+.selector:hover {
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4), 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Dropdown selectors - cambiar de verde a gris */
+.dropdown-selector {
+    background: #2a2a2a !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dropdown-selector button {
+    color: #cccccc !important;
+}
+
+.dropdown-selector button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+/* User area - cambiar de verde a gris */
+.user-area .button {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #cccccc !important;
+}
+
+.user-area .button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+/* Dropdown del usuario - cambiar de verde a gris */
+.dropdown {
+    background: #2a2a2a !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dropdown__item {
+    color: #cccccc !important;
+}
+
+.dropdown__item:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+/* Cart button - cambiar de verde a gris */
+.cart-button {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #cccccc !important;
+}
+
+.cart-button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+/* Badge del carrito - cambiar de verde a gris */
+.badge {
+    background: #666666 !important;
+    color: #ffffff !important;
+}
+
+/* Navegación moderna - cambiar de verde a gris */
+.modern-header {
+    background: rgba(26, 26, 26, 0.9) !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.modern-header.scrolled {
+    background: rgba(26, 26, 26, 0.95) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.logo-text {
+    background: linear-gradient(45deg, #cccccc, #ffffff) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3) !important;
+}
+
+.nav-button {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 2px solid rgba(255, 255, 255, 0.1) !important;
+    color: #cccccc !important;
+}
+
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1) !important;
+}
+
+.nav-button.active {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+/* Headers de secciones - cambiar de verde a gris */
+.simple-header,
+.mind-blowing-header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%) !important;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.title-text {
+    color: #00ff00 !important;
+    text-shadow: 0 0 30px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.6) !important;
+}
+
+.title-accent {
+    color: #ffffff !important;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.2) !important;
+}
+
+.exclusivity-badge,
+.quality-text,
+.innovation-text {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 0, 0, 0.8)) !important;
+    border: 1px solid rgba(0, 255, 0, 0.3) !important;
+    color: #00ff00 !important;
+}
+
+.stat-number {
+    color: #00ff00 !important;
+    text-shadow: 0 0 20px rgba(0, 255, 0, 0.6) !important;
+}
+
+.cta-btn {
+    border: 2px solid rgba(0, 255, 0, 0.3) !important;
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 0, 0, 0.8)) !important;
+    color: #00ff00 !important;
+}
+
+.cta-btn:hover {
+    border-color: rgba(0, 255, 0, 0.6) !important;
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.2), rgba(0, 0, 0, 0.9)) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 20px rgba(0, 255, 0, 0.2) !important;
+}
+
+.cta-btn.primary {
+    background: linear-gradient(135deg, #00ff00, #00cc00) !important;
+    color: #000000 !important;
+}
+
+.cta-btn.primary:hover {
+    background: linear-gradient(135deg, #00cc00, #00ff00) !important;
+    box-shadow: 0 15px 30px rgba(0, 255, 0, 0.4) !important;
+}
+
+/* Floating shapes - restaurar verde */
+.floating-shape {
+    border: 2px solid rgba(0, 255, 0, 0.3) !important;
+}
+
+/* Holographic overlay - restaurar verde */
+.holographic-overlay {
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(0, 255, 0, 0.03) 50%,
+        transparent 70%
+    ) !important;
+}
+
+/* Particle field - restaurar verde */
+.particle {
+    background: linear-gradient(45deg, #00ff00, #00cc00) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5) !important;
+}
+
+/* Glitch lines - restaurar verde */
+.glitch-line {
+    background: linear-gradient(90deg, transparent, #00ff00, transparent) !important;
+    box-shadow: 0 0 10px #00ff00 !important;
+}
+
+/* Demo modal - restaurar verde */
+.demo-modal {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 20, 0, 0.95)) !important;
+    border: 2px solid rgba(0, 255, 0, 0.3) !important;
+}
+
+.demo-header h2 {
+    color: #00ff00 !important;
+    text-shadow: 0 0 20px rgba(0, 255, 0, 0.5) !important;
+}
+
+.demo-close {
+    border: 2px solid rgba(0, 255, 0, 0.3) !important;
+    color: #00ff00 !important;
+}
+
+.demo-close:hover {
+    background: rgba(0, 255, 0, 0.1) !important;
+}
+
+.demo-btn {
+    border: 2px solid rgba(0, 255, 0, 0.3) !important;
+    background: rgba(0, 255, 0, 0.1) !important;
+    color: #00ff00 !important;
+}
+
+.demo-btn:hover {
+    background: rgba(0, 255, 0, 0.2) !important;
+    border-color: rgba(0, 255, 0, 0.6) !important;
+    color: #ffffff !important;
+}
+
+.demo-btn.primary {
+    background: linear-gradient(135deg, #00ff00, #00cc00) !important;
+    color: #000000 !important;
+}
+
+.demo-btn.primary:hover {
+    background: linear-gradient(135deg, #00cc00, #00ff00) !important;
+    box-shadow: 0 8px 25px rgba(0, 255, 0, 0.4) !important;
+}
+
+.demo-header-bar {
+    background: #00ff00 !important;
+    color: #000000 !important;
+}
+
+.demo-dots span {
+    background: #000000 !important;
+}
+
+.demo-product {
+    background: linear-gradient(45deg, #00ff00, #00cc00) !important;
+}
+
+.demo-cart-item {
+    background: #00ff00 !important;
+}
+
+.video-placeholder {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 255, 0, 0.05)) !important;
+    border: 2px dashed rgba(0, 255, 0, 0.3) !important;
+}
+
+.video-placeholder:hover {
+    border-color: rgba(0, 255, 0, 0.6) !important;
+    background: rgba(0, 255, 0, 0.1) !important;
+}
+
+.feature-item {
+    background: rgba(0, 255, 0, 0.05) !important;
+    border: 1px solid rgba(0, 255, 0, 0.2) !important;
+}
+
+.feature-item:hover {
+    background: rgba(0, 255, 0, 0.1) !important;
+}
+
+/* Header principal - cambiar de verde a gris */
+.header {
+    background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 100%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 10px 60px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Logo del header - cambiar el verde a gris */
+.header__logo span .green {
+    color: #cccccc !important;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3)) !important;
+}
+
+.header__logo span .white {
+    color: #ffffff !important;
+    text-shadow: 0 1px 0 #000, 0 0 8px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Botones del header - cambiar de verde a gris */
+.button--primary {
+    background: linear-gradient(135deg, #444444, #555555) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.button--primary:hover {
+    background: linear-gradient(135deg, #555555, #666666) !important;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1) !important;
+}
+
+.button--secondary {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #cccccc !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.button--secondary:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Selectores de idioma y moneda - cambiar de verde a gris */
+.selector {
+    background-color: #2a2a2a !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.6) !important;
+}
+
+.selector:hover {
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.4), 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Dropdown selectors - cambiar de verde a gris */
+.dropdown-selector {
+    background: #2a2a2a !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dropdown-selector button {
+    color: #cccccc !important;
+}
+
+.dropdown-selector button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+/* User area - cambiar de verde a gris */
+.user-area .button {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #cccccc !important;
+}
+
+.user-area .button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+/* Dropdown del usuario - cambiar de verde a gris */
+.dropdown {
+    background: #2a2a2a !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dropdown__item {
+    color: #cccccc !important;
+}
+
+.dropdown__item:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+/* Cart button - cambiar de verde a gris */
+.cart-button {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #cccccc !important;
+}
+
+.cart-button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+/* Badge del carrito - cambiar de verde a gris */
+.badge {
+    background: #666666 !important;
+    color: #ffffff !important;
+}
+
+/* Navegación moderna - cambiar de verde a gris */
+.modern-header {
+    background: rgba(26, 26, 26, 0.9) !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.modern-header.scrolled {
+    background: rgba(26, 26, 26, 0.95) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.logo-text {
+    background: linear-gradient(45deg, #cccccc, #ffffff) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3) !important;
+}
+
+.nav-button {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 2px solid rgba(255, 255, 255, 0.1) !important;
+    color: #cccccc !important;
+}
+
+.nav-button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1) !important;
+}
+
+.nav-button.active {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+/* Headers de secciones - cambiar de verde a gris */
+.simple-header,
+.mind-blowing-header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%) !important;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.title-text {
+    color: #00ff00 !important;
+    text-shadow: 0 0 30px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.6) !important;
+}
+
+.title-accent {
+    color: #ffffff !important;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.2) !important;
+}
+
+.exclusivity-badge,
+.quality-text,
+.innovation-text {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 0, 0, 0.8)) !important;
+    border: 1px solid rgba(0, 255, 0, 0.3) !important;
+    color: #00ff00 !important;
+}
+
+.stat-number {
+    color: #00ff00 !important;
+    text-shadow: 0 0 20px rgba(0, 255, 0, 0.6) !important;
+}
+
+.cta-btn {
+    border: 2px solid rgba(0, 255, 0, 0.3) !important;
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 0, 0, 0.8)) !important;
+    color: #00ff00 !important;
+}
+
+.cta-btn:hover {
+    border-color: rgba(0, 255, 0, 0.6) !important;
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.2), rgba(0, 0, 0, 0.9)) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 20px rgba(0, 255, 0, 0.2) !important;
+}
+
+.cta-btn.primary {
+    background: linear-gradient(135deg, #00ff00, #00cc00) !important;
+    color: #000000 !important;
+}
+
+.cta-btn.primary:hover {
+    background: linear-gradient(135deg, #00cc00, #00ff00) !important;
+    box-shadow: 0 15px 30px rgba(0, 255, 0, 0.4) !important;
+}
+
+/* Floating shapes - restaurar verde */
+.floating-shape {
+    border: 2px solid rgba(0, 255, 0, 0.3) !important;
+}
+
+/* Holographic overlay - restaurar verde */
+.holographic-overlay {
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(0, 255, 0, 0.03) 50%,
+        transparent 70%
+    ) !important;
+}
+
+/* Particle field - restaurar verde */
+.particle {
+    background: linear-gradient(45deg, #00ff00, #00cc00) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5) !important;
+}
+
+/* Glitch lines - restaurar verde */
+.glitch-line {
+    background: linear-gradient(90deg, transparent, #00ff00, transparent) !important;
+    box-shadow: 0 0 10px #00ff00 !important;
+}
+
+/* Demo modal - restaurar verde */
+.demo-modal {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 20, 0, 0.95)) !important;
+    border: 2px solid rgba(0, 255, 0, 0.3) !important;
+}
+
+.demo-header h2 {
+    color: #00ff00 !important;
+    text-shadow: 0 0 20px rgba(0, 255, 0, 0.5) !important;
+}
+
+.demo-close {
+    border: 2px solid rgba(0, 255, 0, 0.3) !important;
+    color: #00ff00 !important;
+}
+
+.demo-close:hover {
+    background: rgba(0, 255, 0, 0.1) !important;
+}
+
+.demo-btn {
+    border: 2px solid rgba(0, 255, 0, 0.3) !important;
+    background: rgba(0, 255, 0, 0.1) !important;
+    color: #00ff00 !important;
+}
+
+.demo-btn:hover {
+    background: rgba(0, 255, 0, 0.2) !important;
+    border-color: rgba(0, 255, 0, 0.6) !important;
+    color: #ffffff !important;
+}
+
+.demo-btn.primary {
+    background: linear-gradient(135deg, #00ff00, #00cc00) !important;
+    color: #000000 !important;
+}
+
+.demo-btn.primary:hover {
+    background: linear-gradient(135deg, #00cc00, #00ff00) !important;
+    box-shadow: 0 8px 25px rgba(0, 255, 0, 0.4) !important;
+}
+
+.demo-header-bar {
+    background: #00ff00 !important;
+    color: #000000 !important;
+}
+
+.demo-dots span {
+    background: #000000 !important;
+}
+
+.demo-product {
+    background: linear-gradient(45deg, #00ff00, #00cc00) !important;
+}
+
+.demo-cart-item {
+    background: #00ff00 !important;
+}
+
+.video-placeholder {
+    background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 255, 0, 0.05)) !important;
+    border: 2px dashed rgba(0, 255, 0, 0.3) !important;
+}
+
+.video-placeholder:hover {
+    border-color: rgba(0, 255, 0, 0.6) !important;
+    background: rgba(0, 255, 0, 0.1) !important;
+}
+
+.feature-item {
+    background: rgba(0, 255, 0, 0.05) !important;
+    border: 1px solid rgba(0, 255, 0, 0.2) !important;
+}
+
+.feature-item:hover {
+    background: rgba(0, 255, 0, 0.1) !important;
+}

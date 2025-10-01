@@ -12,9 +12,13 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+// Enable persistence
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+
 // Referencias a servicios de Firebase
 const auth = firebase.auth();
 const database = firebase.database();
+const storage = firebase.storage();
 
 // Función para registrar un nuevo usuario
 function registrarUsuario(email, password) {
@@ -41,13 +45,11 @@ function obtenerDatos(ruta) {
     return database.ref(ruta).once('value');
 }
 
-// Exportar las funciones
-export {
-    auth,
-    database,
-    registrarUsuario,
-    iniciarSesion,
-    cerrarSesion,
-    guardarDatos,
-    obtenerDatos
-};
+// Hacer funciones disponibles globalmente
+window.firebaseAuth = auth;
+window.firebaseDatabase = database;
+window.registrarUsuario = registrarUsuario;
+window.iniciarSesion = iniciarSesion;
+window.cerrarSesion = cerrarSesion;
+window.guardarDatos = guardarDatos;
+window.obtenerDatos = obtenerDatos;

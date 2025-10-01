@@ -1,0 +1,827 @@
+/* Animaciones de zoom específicas para productos - DESHABILITADAS */
+
+/* Configuración base para el zoom */
+.card {
+    overflow: hidden;
+    position: relative;
+    border-radius: 16px;
+}
+
+.card__image {
+    /* transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); */
+    transform-origin: center center;
+    /* will-change: transform, filter; */
+    border-radius: 16px;
+}
+
+/* Zoom principal con efecto de rebote - DESHABILITADO */
+.card:hover .card__image {
+    /* transform: scale(1.12); */
+    /* filter: brightness(1.25) contrast(1.2) saturate(1.4); */
+}
+
+/* Animación de zoom con múltiples etapas */
+@keyframes productZoom {
+    0% { 
+        transform: scale(1);
+        filter: brightness(1) contrast(1) saturate(1);
+    }
+    30% { 
+        transform: scale(1.15);
+        filter: brightness(1.3) contrast(1.25) saturate(1.5);
+    }
+    60% { 
+        transform: scale(1.08);
+        filter: brightness(1.2) contrast(1.15) saturate(1.3);
+    }
+    100% { 
+        transform: scale(1.12);
+        filter: brightness(1.25) contrast(1.2) saturate(1.4);
+    }
+}
+
+/* .card:hover .card__image {
+    animation: productZoom 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+} */
+
+/* Efecto de overlay con gradiente dinámico */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(0, 255, 0, 0.05) 0%,
+        rgba(0, 255, 0, 0.15) 25%,
+        rgba(0, 255, 0, 0.1) 50%,
+        rgba(0, 255, 0, 0.2) 75%,
+        rgba(0, 255, 0, 0.05) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 16px;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* Efecto de brillo en el borde con animación */
+@keyframes borderGlow {
+    0%, 100% { 
+        box-shadow: 
+            0 0 0 2px rgba(0, 255, 0, 0.4),
+            0 25px 50px rgba(0, 255, 0, 0.25),
+            inset 0 0 30px rgba(0, 255, 0, 0.1);
+    }
+    25% { 
+        box-shadow: 
+            0 0 0 3px rgba(0, 255, 0, 0.6),
+            0 30px 60px rgba(0, 255, 0, 0.35),
+            inset 0 0 40px rgba(0, 255, 0, 0.15);
+    }
+    50% { 
+        box-shadow: 
+            0 0 0 4px rgba(0, 255, 0, 0.8),
+            0 35px 70px rgba(0, 255, 0, 0.45),
+            inset 0 0 50px rgba(0, 255, 0, 0.2);
+    }
+    75% { 
+        box-shadow: 
+            0 0 0 3px rgba(0, 255, 0, 0.6),
+            0 30px 60px rgba(0, 255, 0, 0.35),
+            inset 0 0 40px rgba(0, 255, 0, 0.15);
+    }
+}
+
+.card:hover {
+    animation: borderGlow 2.5s ease-in-out infinite;
+}
+
+/* Efecto de partículas flotantes */
+.card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: rgba(0, 255, 0, 0.8);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 3;
+    pointer-events: none;
+    box-shadow: 
+        0 0 10px rgba(0, 255, 0, 0.6),
+        0 0 20px rgba(0, 255, 0, 0.4),
+        0 0 30px rgba(0, 255, 0, 0.2);
+}
+
+.card:hover::after {
+    opacity: 1;
+    animation: particleFloat 3s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translate(-60%, -40%) scale(1.2);
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(-40%, -60%) scale(0.8);
+        opacity: 0.6;
+    }
+    75% { 
+        transform: translate(-70%, -30%) scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+/* Efecto de zoom en el contenido de la tarjeta */
+.card__content {
+    transition: all 0.4s ease;
+    z-index: 2;
+    position: relative;
+}
+
+.card:hover .card__content {
+    transform: translateY(-5px);
+}
+
+/* Efecto de zoom en el título */
+.card__title {
+    transition: all 0.3s ease;
+}
+
+.card:hover .card__title {
+    color: #00ff00;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    transform: scale(1.02);
+}
+
+/* Efecto de zoom en el precio */
+.card__price {
+    transition: all 0.3s ease;
+}
+
+.card:hover .card__price {
+    color: #00ff00;
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+    transform: scale(1.05);
+}
+
+/* Efecto de zoom en las estrellas */
+.product-rating {
+    transition: all 0.3s ease;
+}
+
+.card:hover .product-rating .star {
+    transform: scale(1.1);
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+}
+
+/* Efecto de zoom en los botones */
+.card__actions {
+    transition: all 0.3s ease;
+}
+
+.card:hover .card__actions .button {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 255, 0, 0.3);
+}
+
+/* Efecto de zoom en el selector de cantidad */
+.quantity-selector {
+    transition: all 0.3s ease;
+}
+
+.card:hover .quantity-selector {
+    transform: scale(1.02);
+}
+
+.card:hover .quantity-btn {
+    background: rgba(0, 255, 0, 0.2);
+    border-color: rgba(0, 255, 0, 0.6);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+.card:hover .quantity-input {
+    border-color: rgba(0, 255, 0, 0.6);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .card:hover .card__image {
+        transform: scale(1.08);
+    }
+    
+    .card:hover {
+        transform: translateY(-5px) scale(1.02);
+    }
+    
+    .card:hover .card__content {
+        transform: translateY(-3px);
+    }
+}
+
+/* Efecto de zoom más suave para dispositivos táctiles */
+@media (hover: none) {
+    .card:active .card__image {
+        transform: scale(1.05);
+        filter: brightness(1.1) contrast(1.1);
+    }
+    
+    .card:active {
+        transform: translateY(-3px) scale(1.01);
+    }
+}
+
+/* Animación de zoom pulsante */
+@keyframes zoomPulse {
+    0%, 100% { 
+        transform: scale(1.12);
+        filter: brightness(1.25) contrast(1.2) saturate(1.4);
+    }
+    50% { 
+        transform: scale(1.15);
+        filter: brightness(1.35) contrast(1.3) saturate(1.6);
+    }
+}
+
+/* Animaciones para partículas flotantes */
+@keyframes particleFloat0 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translate(-10px, -15px) scale(1.2);
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(5px, -25px) scale(0.8);
+        opacity: 0.6;
+    }
+    75% { 
+        transform: translate(-15px, -10px) scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+@keyframes particleFloat1 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translate(15px, -10px) scale(1.1);
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(-5px, -20px) scale(0.9);
+        opacity: 0.7;
+    }
+    75% { 
+        transform: translate(10px, -5px) scale(1.3);
+        opacity: 0.9;
+    }
+}
+
+@keyframes particleFloat2 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translate(-20px, 5px) scale(0.9);
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(10px, -15px) scale(1.2);
+        opacity: 0.6;
+    }
+    75% { 
+        transform: translate(-5px, -10px) scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+@keyframes particleFloat3 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translate(5px, -20px) scale(1.3);
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(-15px, -5px) scale(0.8);
+        opacity: 0.7;
+    }
+    75% { 
+        transform: translate(20px, -15px) scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+@keyframes particleFloat4 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translate(-15px, -25px) scale(1.1);
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(20px, -10px) scale(0.9);
+        opacity: 0.6;
+    }
+    75% { 
+        transform: translate(-10px, -5px) scale(1.2);
+        opacity: 0.9;
+    }
+}
+
+@keyframes particleFloat5 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translate(25px, -5px) scale(0.8);
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(-10px, -20px) scale(1.3);
+        opacity: 0.7;
+    }
+    75% { 
+        transform: translate(15px, -10px) scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+/* Clase para zoom activo */
+.zoom-active {
+    transform: scale(1.12) !important;
+    filter: brightness(1.25) contrast(1.2) saturate(1.4) !important;
+}
+
+/* Efecto de zoom con rebote más dramático */
+@keyframes dramaticZoom {
+    0% { 
+        transform: scale(1);
+        filter: brightness(1) contrast(1) saturate(1);
+    }
+    20% { 
+        transform: scale(1.2);
+        filter: brightness(1.4) contrast(1.3) saturate(1.7);
+    }
+    40% { 
+        transform: scale(1.1);
+        filter: brightness(1.3) contrast(1.25) saturate(1.5);
+    }
+    60% { 
+        transform: scale(1.18);
+        filter: brightness(1.35) contrast(1.3) saturate(1.6);
+    }
+    80% { 
+        transform: scale(1.08);
+        filter: brightness(1.2) contrast(1.15) saturate(1.3);
+    }
+    100% { 
+        transform: scale(1.12);
+        filter: brightness(1.25) contrast(1.2) saturate(1.4);
+    }
+}
+
+/* .card:hover .card__image {
+    animation: dramaticZoom 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+} */
+
+/* Configuración base para el zoom */
+.card {
+    overflow: hidden;
+    position: relative;
+    border-radius: 16px;
+}
+
+.card__image {
+    /* transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); */
+    transform-origin: center center;
+    /* will-change: transform, filter; */
+    border-radius: 16px;
+}
+
+/* Zoom principal con efecto de rebote - DESHABILITADO */
+.card:hover .card__image {
+    /* transform: scale(1.12); */
+    /* filter: brightness(1.25) contrast(1.2) saturate(1.4); */
+}
+
+/* Animación de zoom con múltiples etapas */
+@keyframes productZoom {
+    0% { 
+        transform: scale(1);
+        filter: brightness(1) contrast(1) saturate(1);
+    }
+    30% { 
+        transform: scale(1.15);
+        filter: brightness(1.3) contrast(1.25) saturate(1.5);
+    }
+    60% { 
+        transform: scale(1.08);
+        filter: brightness(1.2) contrast(1.15) saturate(1.3);
+    }
+    100% { 
+        transform: scale(1.12);
+        filter: brightness(1.25) contrast(1.2) saturate(1.4);
+    }
+}
+
+/* .card:hover .card__image {
+    animation: productZoom 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+} */
+
+/* Efecto de overlay con gradiente dinámico */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(0, 255, 0, 0.05) 0%,
+        rgba(0, 255, 0, 0.15) 25%,
+        rgba(0, 255, 0, 0.1) 50%,
+        rgba(0, 255, 0, 0.2) 75%,
+        rgba(0, 255, 0, 0.05) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 16px;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* Efecto de brillo en el borde con animación */
+@keyframes borderGlow {
+    0%, 100% { 
+        box-shadow: 
+            0 0 0 2px rgba(0, 255, 0, 0.4),
+            0 25px 50px rgba(0, 255, 0, 0.25),
+            inset 0 0 30px rgba(0, 255, 0, 0.1);
+    }
+    25% { 
+        box-shadow: 
+            0 0 0 3px rgba(0, 255, 0, 0.6),
+            0 30px 60px rgba(0, 255, 0, 0.35),
+            inset 0 0 40px rgba(0, 255, 0, 0.15);
+    }
+    50% { 
+        box-shadow: 
+            0 0 0 4px rgba(0, 255, 0, 0.8),
+            0 35px 70px rgba(0, 255, 0, 0.45),
+            inset 0 0 50px rgba(0, 255, 0, 0.2);
+    }
+    75% { 
+        box-shadow: 
+            0 0 0 3px rgba(0, 255, 0, 0.6),
+            0 30px 60px rgba(0, 255, 0, 0.35),
+            inset 0 0 40px rgba(0, 255, 0, 0.15);
+    }
+}
+
+.card:hover {
+    animation: borderGlow 2.5s ease-in-out infinite;
+}
+
+/* Efecto de partículas flotantes */
+.card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background: rgba(0, 255, 0, 0.8);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 3;
+    pointer-events: none;
+    box-shadow: 
+        0 0 10px rgba(0, 255, 0, 0.6),
+        0 0 20px rgba(0, 255, 0, 0.4),
+        0 0 30px rgba(0, 255, 0, 0.2);
+}
+
+.card:hover::after {
+    opacity: 1;
+    animation: particleFloat 3s ease-in-out infinite;
+}
+
+@keyframes particleFloat {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translate(-60%, -40%) scale(1.2);
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(-40%, -60%) scale(0.8);
+        opacity: 0.6;
+    }
+    75% { 
+        transform: translate(-70%, -30%) scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+/* Efecto de zoom en el contenido de la tarjeta */
+.card__content {
+    transition: all 0.4s ease;
+    z-index: 2;
+    position: relative;
+}
+
+.card:hover .card__content {
+    transform: translateY(-5px);
+}
+
+/* Efecto de zoom en el título */
+.card__title {
+    transition: all 0.3s ease;
+}
+
+.card:hover .card__title {
+    color: #00ff00;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    transform: scale(1.02);
+}
+
+/* Efecto de zoom en el precio */
+.card__price {
+    transition: all 0.3s ease;
+}
+
+.card:hover .card__price {
+    color: #00ff00;
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+    transform: scale(1.05);
+}
+
+/* Efecto de zoom en las estrellas */
+.product-rating {
+    transition: all 0.3s ease;
+}
+
+.card:hover .product-rating .star {
+    transform: scale(1.1);
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+}
+
+/* Efecto de zoom en los botones */
+.card__actions {
+    transition: all 0.3s ease;
+}
+
+.card:hover .card__actions .button {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 255, 0, 0.3);
+}
+
+/* Efecto de zoom en el selector de cantidad */
+.quantity-selector {
+    transition: all 0.3s ease;
+}
+
+.card:hover .quantity-selector {
+    transform: scale(1.02);
+}
+
+.card:hover .quantity-btn {
+    background: rgba(0, 255, 0, 0.2);
+    border-color: rgba(0, 255, 0, 0.6);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+.card:hover .quantity-input {
+    border-color: rgba(0, 255, 0, 0.6);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .card:hover .card__image {
+        transform: scale(1.08);
+    }
+    
+    .card:hover {
+        transform: translateY(-5px) scale(1.02);
+    }
+    
+    .card:hover .card__content {
+        transform: translateY(-3px);
+    }
+}
+
+/* Efecto de zoom más suave para dispositivos táctiles */
+@media (hover: none) {
+    .card:active .card__image {
+        transform: scale(1.05);
+        filter: brightness(1.1) contrast(1.1);
+    }
+    
+    .card:active {
+        transform: translateY(-3px) scale(1.01);
+    }
+}
+
+/* Animación de zoom pulsante */
+@keyframes zoomPulse {
+    0%, 100% { 
+        transform: scale(1.12);
+        filter: brightness(1.25) contrast(1.2) saturate(1.4);
+    }
+    50% { 
+        transform: scale(1.15);
+        filter: brightness(1.35) contrast(1.3) saturate(1.6);
+    }
+}
+
+/* Animaciones para partículas flotantes */
+@keyframes particleFloat0 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translate(-10px, -15px) scale(1.2);
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(5px, -25px) scale(0.8);
+        opacity: 0.6;
+    }
+    75% { 
+        transform: translate(-15px, -10px) scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+@keyframes particleFloat1 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translate(15px, -10px) scale(1.1);
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(-5px, -20px) scale(0.9);
+        opacity: 0.7;
+    }
+    75% { 
+        transform: translate(10px, -5px) scale(1.3);
+        opacity: 0.9;
+    }
+}
+
+@keyframes particleFloat2 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translate(-20px, 5px) scale(0.9);
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(10px, -15px) scale(1.2);
+        opacity: 0.6;
+    }
+    75% { 
+        transform: translate(-5px, -10px) scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+@keyframes particleFloat3 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translate(5px, -20px) scale(1.3);
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(-15px, -5px) scale(0.8);
+        opacity: 0.7;
+    }
+    75% { 
+        transform: translate(20px, -15px) scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+@keyframes particleFloat4 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translate(-15px, -25px) scale(1.1);
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(20px, -10px) scale(0.9);
+        opacity: 0.6;
+    }
+    75% { 
+        transform: translate(-10px, -5px) scale(1.2);
+        opacity: 0.9;
+    }
+}
+
+@keyframes particleFloat5 {
+    0%, 100% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    25% { 
+        transform: translate(25px, -5px) scale(0.8);
+        opacity: 1;
+    }
+    50% { 
+        transform: translate(-10px, -20px) scale(1.3);
+        opacity: 0.7;
+    }
+    75% { 
+        transform: translate(15px, -10px) scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+/* Clase para zoom activo */
+.zoom-active {
+    transform: scale(1.12) !important;
+    filter: brightness(1.25) contrast(1.2) saturate(1.4) !important;
+}
+
+/* Efecto de zoom con rebote más dramático */
+@keyframes dramaticZoom {
+    0% { 
+        transform: scale(1);
+        filter: brightness(1) contrast(1) saturate(1);
+    }
+    20% { 
+        transform: scale(1.2);
+        filter: brightness(1.4) contrast(1.3) saturate(1.7);
+    }
+    40% { 
+        transform: scale(1.1);
+        filter: brightness(1.3) contrast(1.25) saturate(1.5);
+    }
+    60% { 
+        transform: scale(1.18);
+        filter: brightness(1.35) contrast(1.3) saturate(1.6);
+    }
+    80% { 
+        transform: scale(1.08);
+        filter: brightness(1.2) contrast(1.15) saturate(1.3);
+    }
+    100% { 
+        transform: scale(1.12);
+        filter: brightness(1.25) contrast(1.2) saturate(1.4);
+    }
+}
+
+/* .card:hover .card__image {
+    animation: dramaticZoom 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+} */

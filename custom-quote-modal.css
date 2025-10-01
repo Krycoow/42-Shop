@@ -1,0 +1,230 @@
+/* Estilos para el modal de presupuesto custom */
+
+.custom-quote-modal {
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.custom-quote-modal .modal__content {
+    background: linear-gradient(135deg, 
+        rgba(0, 0, 0, 0.95) 0%, 
+        rgba(20, 20, 20, 0.98) 100%);
+    border: 2px solid rgba(0, 255, 0, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+}
+
+.custom-quote-modal .modal__header {
+    background: linear-gradient(135deg, 
+        rgba(0, 255, 0, 0.1) 0%, 
+        rgba(0, 0, 0, 0.8) 100%);
+    border-bottom: 2px solid rgba(0, 255, 0, 0.3);
+    border-radius: 18px 18px 0 0;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.custom-quote-modal .modal__header h2 {
+    color: #00ff00;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+.custom-quote-modal .modal__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.custom-quote-modal .modal__close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+.custom-quote-modal .modal__form {
+    padding: 2rem;
+}
+
+.custom-quote-modal .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.custom-quote-modal .form-group label {
+    display: block;
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.custom-quote-modal .form-group input,
+.custom-quote-modal .form-group select,
+.custom-quote-modal .form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(0, 255, 0, 0.2);
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.custom-quote-modal .form-group input:focus,
+.custom-quote-modal .form-group select:focus,
+.custom-quote-modal .form-group textarea:focus {
+    outline: none;
+    border-color: rgba(0, 255, 0, 0.6);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.custom-quote-modal .form-group input::placeholder,
+.custom-quote-modal .form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.custom-quote-modal .form-group select option {
+    background: #000000;
+    color: #ffffff;
+}
+
+.custom-quote-modal .form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.custom-quote-modal .button {
+    background: linear-gradient(135deg, 
+        #00ff00 0%, 
+        #00cc00 100%);
+    border: 2px solid rgba(0, 255, 0, 0.8);
+    border-radius: 12px;
+    color: #000000;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.custom-quote-modal .button:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.5);
+}
+
+.custom-quote-modal .modal__footer {
+    background: rgba(0, 255, 0, 0.05);
+    border-top: 2px solid rgba(0, 255, 0, 0.2);
+    border-radius: 0 0 18px 18px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.custom-quote-modal .modal__footer p {
+    color: #ffffff;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.custom-quote-modal .modal__footer strong {
+    color: #00ff00;
+}
+
+/* Animaciones */
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.custom-quote-modal[open] {
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .custom-quote-modal {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .custom-quote-modal .modal__header {
+        padding: 1rem;
+    }
+    
+    .custom-quote-modal .modal__header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .custom-quote-modal .modal__form {
+        padding: 1.5rem;
+    }
+    
+    .custom-quote-modal .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .custom-quote-modal .form-group input,
+    .custom-quote-modal .form-group select,
+    .custom-quote-modal .form-group textarea {
+        padding: 0.7rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .custom-quote-modal .button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .custom-quote-modal .modal__header {
+        padding: 0.8rem;
+    }
+    
+    .custom-quote-modal .modal__header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .custom-quote-modal .modal__form {
+        padding: 1rem;
+    }
+    
+    .custom-quote-modal .form-group input,
+    .custom-quote-modal .form-group select,
+    .custom-quote-modal .form-group textarea {
+        padding: 0.6rem 0.7rem;
+        font-size: 0.85rem;
+    }
+    
+    .custom-quote-modal .button {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}

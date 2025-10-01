@@ -3,407 +3,1208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>42 Shop</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <title>42 Shop - La Mejor Página de Ropa a la Moda del Año</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="modern-styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="firebase-styles.css">
-    
-    <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#333333',
-            secondary: '#666666',
-            accent: '#4CAF50'
-          },
-          fontFamily: {
-            poppins: ['Poppins', 'sans-serif']
-          }
+    <link rel="stylesheet" href="review-styles.css">
+    <!-- <link rel="stylesheet" href="animations.css"> -->
+    <!-- <link rel="stylesheet" href="zoom-animations.css"> -->
+    <link rel="stylesheet" href="starred-background.css">
+    <link rel="stylesheet" href="modern-navigation.css">
+    <link rel="stylesheet" href="welcome-section.css">
+    <link rel="stylesheet" href="products-section.css">
+    <link rel="stylesheet" href="modern-cart.css">
+    <link rel="stylesheet" href="amazing-product-modal.css">
+    <link rel="stylesheet" href="text-pressure.css">
+    <link rel="stylesheet" href="professional-reviews.css">
+    <!-- <link rel="stylesheet" href="professional-enhancements.css"> -->
+    <!-- <link rel="stylesheet" href="new-smooth-animations.css"> -->
+    <!-- <link rel="stylesheet" href="disable-all-animations.css"> -->
+    <link rel="stylesheet" href="perfect-animations.css">
+    <link rel="stylesheet" href="enhanced-reviews-styles.css">
+    <link rel="stylesheet" href="header-gray-fix.css">
+    <link rel="stylesheet" href="real-reviews-styles.css">
+    <link rel="stylesheet" href="custom-products-showcase.css">
+    <link rel="stylesheet" href="spectacular-product-animations.css">
+    <link rel="stylesheet" href="spectacular-logo.css">
+    <link rel="stylesheet" href="custom-quote-modal.css">
+    <link rel="stylesheet" href="featured-products-styles.css">
+    <link rel="stylesheet" href="modern-cart-styles.css">
+    <link rel="stylesheet" href="why-number-one-styles.css">
+    <link rel="stylesheet" href="product-hover-animations.css">
+    <link rel="stylesheet" href="modern-cart-redesign.css">
+    <link rel="stylesheet" href="modern-navigation-styles.css">
+    <link rel="stylesheet" href="user-profile-styles.css">
+    <link rel="stylesheet" href="neon-logo-styles.css">
+    <link rel="stylesheet" href="custom-clothing-showcase.css">
+    <link rel="stylesheet" href="products-sale-hover-zoom.css">
+    <style>
+        /* Estilos para botones de autenticación */
+        .button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+            font-size: 14px;
         }
-      }
-    }
-    </script>
-    
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
-    
-    <!-- Nuestros scripts -->
-    <script src="firebase-config.js" type="module"></script>
-    <script src="auth.js" type="module"></script>
-    <script src="shop.js" type="module"></script>
-    <script src="orders.js" type="module"></script>
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 255, 0, 0.3);
+        }
+        
+        .button--secondary {
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid rgba(0, 255, 0, 0.3);
+            color: #fff;
+        }
+        
+        .button--secondary:hover {
+            background: rgba(0, 255, 0, 0.2);
+            border-color: rgba(0, 255, 0, 0.5);
+        }
+        
+        /* Estilos para el menú de usuario */
+        #userMenu {
+            position: relative;
+        }
+        
+        #userDropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid rgba(0, 255, 0, 0.3);
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 5px;
+            min-width: 200px;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .dropdown-item {
+            width: 100%;
+            padding: 10px;
+            background: none;
+            border: none;
+            color: #fff;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(0, 255, 0, 0.1);
+            color: #00ff00;
+        }
+        
+        /* Animación de notificaciones */
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            20% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+            80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+        }
+    </style>
+    <style>
+        /* Animaciones del logo */
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(5deg); }
+        }
+        
+        @keyframes numberGlow {
+            0% { 
+                text-shadow: 0 0 20px rgba(0, 255, 0, 0.8), 0 0 40px rgba(0, 255, 0, 0.6), 0 0 60px rgba(0, 255, 0, 0.4);
+                transform: scale(1);
+            }
+            100% { 
+                text-shadow: 0 0 30px rgba(0, 255, 0, 1), 0 0 50px rgba(0, 255, 0, 0.8), 0 0 70px rgba(0, 255, 0, 0.6);
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes wordPulse {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% { width: 0; height: 0; opacity: 0; }
+            50% { width: 100px; height: 100px; opacity: 0.3; }
+        }
+        
+        @keyframes particleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-10px) rotate(180deg); opacity: 1; }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideOutRight {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+        }
+        
+        /* Forzar colores del logo */
+        .header__logo .logo-number {
+            color: #00ff00 !important;
+            text-shadow: 0 0 20px rgba(0, 255, 0, 0.8), 0 0 40px rgba(0, 255, 0, 0.6), 0 0 60px rgba(0, 255, 0, 0.4) !important;
+            font-size: 2.5rem !important;
+            font-weight: 900 !important;
+        }
+        
+        .header__logo .logo-word {
+            color: #ffffff !important;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
+            font-size: 1rem !important;
+            font-weight: 700 !important;
+        }
+        
+        /* Estilos para los botones del header */
+        .header__nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .header__nav .button {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .header__nav .button--primary {
+            background: linear-gradient(135deg, #00ff00, #00cc00);
+            color: #000000;
+            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+        }
+        
+        .header__nav .button--primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 0, 0.4);
+        }
+        
+        .header__nav .button--secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .header__nav .button--secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Estilos para botones de navegación activos */
+        .header__nav .nav-button.active {
+            background: linear-gradient(135deg, #00ff00, #00cc00);
+            color: #000000;
+            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
+        }
+        
+        .header__nav .nav-button.active:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 255, 0, 0.4);
+        }
+        
+    </style>
 </head>
 <body>
-    <header class="header reveal">
-        <div class="brand" id="brandMenu">
-            <button id="brandButton" class="brand__button" aria-haspopup="menu" aria-expanded="false">
-                <span class="logo">42</span>
-                <h1 class="title">Shop</h1>
-            </button>
-            
-            <!-- Elementos de autenticación -->
-            <div class="auth-buttons">
-                <button id="loginBtn" class="auth-btn">Iniciar Sesión</button>
-                <button id="registerBtn" class="auth-btn">Registrarse</button>
-                <button id="logoutBtn" class="auth-btn" style="display: none;">Cerrar Sesión</button>
-                <span id="userInfo" class="user-info" style="display: none;"></span>
-            </div>
-            
-            <!-- Carrito -->
-            <div class="cart-icon">
-                <button id="cartButton" class="cart-btn">
-                    🛒 <span id="cartCount">0</span>
-                </button>
-            </div>
-            <div id="brandDropdown" class="dropdown" role="menu" hidden>
-                <button class="dropdown__item" data-nav="inicio">Inicio</button>
-                <button class="dropdown__item" data-nav="auth">Crear cuenta / Iniciar sesión</button>
-            </div>
-        </div>
-        <nav class="actions">
-            <div class="prefs">
-                <select id="langSelect" aria-label="Idioma">
-                    <option value="es">ES</option>
-                    <option value="en">EN</option>
-                    <option value="pt">PT</option>
-                </select>
-                <select id="curSelect" aria-label="Moneda">
-                    <option value="EUR">EUR</option>
-                    <option value="USD">USD</option>
-                </select>
-            </div>
-            <div class="user" id="userArea" hidden>
-                <button id="userButton" class="user__button" aria-haspopup="menu" aria-expanded="false">
-                    <img id="userAvatar" class="user__avatar" alt="avatar" />
-                    <span id="userNameShort" class="user__name">Usuario</span>
-                </button>
-                <div id="userDropdown" class="dropdown" role="menu" hidden>
-                    <button class="dropdown__item" data-user="settings">Ajustes de la cuenta</button>
-                    <button class="dropdown__item" data-user="tracking">Seguimiento de mi pedido</button>
-                    <button class="dropdown__item" data-user="purchases">Compras recientes</button>
-                    <button class="dropdown__item" data-user="logout">Cerrar sesión</button>
+    <header class="header">
+
+        <div class="header__logo">
+            <div class="logo-container">
+                <div class="logo-text">
+                    <span class="logo-number">42</span>
+                    <span class="logo-word">SHOP</span>
                 </div>
             </div>
-            <button id="cartButton" class="button button--accent" aria-controls="cart" aria-expanded="false">🛒 Carrito <span id="cartCount" class="badge">0</span></button>
+            
+            <div class="logo-effects">
+                <div class="logo-particles">
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                </div>
+                <div class="logo-glow"></div>
+                <div class="logo-waves">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="header__nav">
+            <button id="cartButton" class="button button--secondary cart-button" aria-label="Carrito">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                          d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"/>
+                </svg>
+                <span>Carrito</span>
+            </button>
+
+            <div id="userArea" class="user-area" hidden>
+                <button id="userButton" class="button button--secondary">
+                    <img id="userAvatar" src="https://raw.githubusercontent.com/Krycoow/42-Shop/main/assets/avatar.png" alt="Avatar" class="avatar">
+                    <span id="userName">Usuario</span>
+                </button>
+                <div id="userDropdown" class="dropdown" hidden>
+                    <button class="dropdown__item" data-action="settings">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                        </svg>
+                        Ajustes
+                    </button>
+                    <button class="dropdown__item" data-action="orders">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                        </svg>
+                        Mis Pedidos
+                    </button>
+                    <button class="dropdown__item" data-action="logout">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                        </svg>
+                        Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+
+            <!-- Selectores de idioma y moneda -->
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+                <div id="languageSelector" class="selector button button--secondary" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span><span class="flag">🇪🇸</span> <span class="code">ES</span></span>
+                </div>
+                <div id="currencySelector" class="selector button button--secondary" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span><span class="flag">🇪🇺</span> <span class="code">EUR</span></span>
+                </div>
+            </div>
+
+            <button id="loginBtn" class="button button--primary">Iniciar Sesión</button>
+            <button id="registerBtn" class="button button--secondary">Crear Cuenta</button>
         </nav>
     </header>
 
-    <main class="container reveal">
-        <section class="filters reveal" aria-label="Filtros de tienda">
-            <div class="search">
-                <input id="searchInput" type="search" placeholder="Buscar modelos..." aria-label="Buscar modelos">
+            <div id="languageDropdown" class="dropdown-selector hidden" aria-hidden="true">
+                <button data-lang="es">{FLAG_ES} Español</button>
+                <button data-lang="en">{FLAG_US} English</button>
+                <button data-lang="fr">{FLAG_FR} Français</button>
             </div>
-            <div class="sort">
-                <label for="sortSelect" id="sortLabel">Ordenar:</label>
-                <select id="sortSelect" aria-label="Ordenar productos">
-                    <option value="popular" id="optPopular">Populares</option>
-                    <option value="price-asc" id="optAsc">Precio: menor a mayor</option>
-                    <option value="price-desc" id="optDesc">Precio: mayor a menor</option>
-                </select>
+            <div id="currencyDropdown" class="dropdown-selector hidden" aria-hidden="true">
+                <button data-currency="eur">{FLAG_EU} EUR €</button>
+                <button data-currency="usd">{FLAG_US} USD $</button>
+                <button data-currency="gbp">{FLAG_GB} GBP £</button>
+            </div>
+
+    <!-- Sección de ropa custom con precios espectaculares -->
+    <section class="custom-clothing-showcase">
+        <div class="custom-clothing-background">
+            <div class="spectacular-green-animation">
+                <!-- Partículas de energía verde -->
+                <div class="energy-particle particle-1"></div>
+                <div class="energy-particle particle-2"></div>
+                <div class="energy-particle particle-3"></div>
+                <div class="energy-particle particle-4"></div>
+                <div class="energy-particle particle-5"></div>
+                <div class="energy-particle particle-6"></div>
+                
+                <!-- Ondas de energía -->
+                <div class="energy-wave wave-1"></div>
+                <div class="energy-wave wave-2"></div>
+                <div class="energy-wave wave-3"></div>
+                
+                <!-- Líneas de energía -->
+                <div class="energy-line line-1"></div>
+                <div class="energy-line line-2"></div>
+                <div class="energy-line line-3"></div>
+                
+                <!-- Círculos de energía -->
+                <div class="energy-circle circle-1"></div>
+                <div class="energy-circle circle-2"></div>
+                <div class="energy-circle circle-3"></div>
+            </div>
+        </div>
+        
+        <div class="custom-clothing-content">
+            <div class="custom-clothing-header">
+                <h2 class="custom-clothing-title">🔥 LOS MEJORES PRODUCTOS DEL AÑO</h2>
+                <p class="custom-clothing-subtitle">Ropa custom de calidad premium • Diseños únicos • Precios increíbles</p>
+            </div>
+
+            <div class="custom-clothing-prices">
+                <div class="price-card">
+                    <div class="price-card-icon">👕</div>
+                    <h3 class="price-card-title">Camisetas Personalizadas</h3>
+                    <p class="price-card-description">Diseño único, calidad premium, algodón 100% orgánico</p>
+                    <div class="price-card-original">€35.99</div>
+                    <div class="price-card-price">€19.99</div>
+                    <div class="price-card-discount">-44% OFF</div>
+                    <ul class="price-card-features">
+                        <li>Algodón 100% orgánico</li>
+                        <li>Diseño personalizado</li>
+                        <li>Envío gratis</li>
+                        <li>Garantía de calidad</li>
+                    </ul>
+                    <button class="price-card-button" onclick="addCustomToCart('camiseta', 19.99)">
+                        🛒 Añadir al Carrito
+                    </button>
+                </div>
+
+                <div class="price-card">
+                    <div class="price-card-icon">🧥</div>
+                    <h3 class="price-card-title">Hoodies Premium</h3>
+                    <p class="price-card-description">Abrigo con capucha, diseño exclusivo, máxima comodidad</p>
+                    <div class="price-card-original">€89.99</div>
+                    <div class="price-card-price">€49.99</div>
+                    <div class="price-card-discount">-44% OFF</div>
+                    <ul class="price-card-features">
+                        <li>Material premium</li>
+                        <li>Diseño exclusivo</li>
+                        <li>Capucha ajustable</li>
+                        <li>Resistente al lavado</li>
+                    </ul>
+                    <button class="price-card-button" onclick="addCustomToCart('hoodie', 49.99)">
+                        🛒 Añadir al Carrito
+                    </button>
+                </div>
+
+                <div class="price-card">
+                    <div class="price-card-icon">👖</div>
+                    <h3 class="price-card-title">Pantalones Custom</h3>
+                    <p class="price-card-description">Jeans personalizados, corte perfecto, estilo único</p>
+                    <div class="price-card-original">€79.99</div>
+                    <div class="price-card-price">€39.99</div>
+                    <div class="price-card-discount">-50% OFF</div>
+                    <ul class="price-card-features">
+                        <li>Denim de calidad</li>
+                        <li>Corte personalizado</li>
+                        <li>Diseño único</li>
+                        <li>Tallas disponibles</li>
+                    </ul>
+                    <button class="price-card-button" onclick="addCustomToCart('pantalon', 39.99)">
+                        🛒 Añadir al Carrito
+                    </button>
+                </div>
+
+                <div class="price-card">
+                    <div class="price-card-icon">🎒</div>
+                    <h3 class="price-card-title">Accesorios Premium</h3>
+                    <p class="price-card-description">Bolsas, gorras y accesorios con tu diseño personalizado</p>
+                    <div class="price-card-original">€45.99</div>
+                    <div class="price-card-price">€24.99</div>
+                    <div class="price-card-discount">-46% OFF</div>
+                    <ul class="price-card-features">
+                        <li>Materiales premium</li>
+                        <li>Diseño personalizado</li>
+                        <li>Durabilidad garantizada</li>
+                        <li>Variedad de estilos</li>
+                    </ul>
+                    <button class="price-card-button" onclick="addCustomToCart('accesorio', 24.99)">
+                        🛒 Añadir al Carrito
+                    </button>
+                </div>
+            </div>
+
+            <div class="custom-clothing-cta">
+                <button class="cta-button primary" onclick="scrollToProducts()">
+                    <span class="btn-icon">🛍️</span>
+                    <span class="btn-text">Ver Todos los Productos</span>
+                </button>
+                <button class="cta-button secondary" onclick="showCustomQuote()">
+                    <span class="btn-icon">💰</span>
+                    <span class="btn-text">Solicitar Presupuesto Custom</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <main class="main">
+        <!-- Sección ¿Por qué somos #1? -->
+        <section class="why-we-are-number-one" id="home">
+            <div class="why-container">
+                <div class="why-header">
+                    <h2 class="why-title">🔥 ¿Por Qué Somos #1?</h2>
+                    <p class="why-subtitle">Descubre por qué miles de clientes nos eligen cada día</p>
+                    <div class="why-badge">🏆 TIENDA PREMIUM #1 EN ESPAÑA</div>
+                </div>
+
+                <div class="why-grid">
+                    <div class="why-card">
+                        <div class="why-icon">⚡</div>
+                        <h3 class="why-card-title">¡ENVÍO EN 24H!</h3>
+                        <p class="why-card-description">¿Imaginas recibir tu pedido mañana mismo? ¡Con nosotros es REALIDAD! Envío GRATIS y súper rápido.</p>
+                        <div class="why-badge-small">🚚 GRATIS</div>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon">💰</div>
+                        <h3 class="why-card-title">¡AHORRA HASTA 70%!</h3>
+                        <p class="why-card-description">Precios que te van a volver loco. Calidad premium a precios que no creerás. ¡Tu bolsillo te lo agradecerá!</p>
+                        <div class="why-badge-small">💸 OFERTA</div>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon">🎯</div>
+                        <h3 class="why-card-title">¡GARANTÍA TOTAL!</h3>
+                        <p class="why-card-description">Si no te encanta, te devolvemos el dinero SIN preguntas. 30 días para cambiar de opinión. ¡Sin riesgo!</p>
+                        <div class="why-badge-small">✅ SIN RIESGO</div>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon">🔥</div>
+                        <h3 class="why-card-title">¡TENDENCIA AHORA!</h3>
+                        <p class="why-card-description">Los looks que están arrasando en redes sociales. Sé el primero en lucir lo más IN. ¡Todos te van a preguntar dónde lo compraste!</p>
+                        <div class="why-badge-small">📱 VIRAL</div>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon">💎</div>
+                        <h3 class="why-card-title">¡CALIDAD LUXURY!</h3>
+                        <p class="why-card-description">Materiales que solo encuentras en tiendas de lujo, pero a precios normales. Sensación premium garantizada.</p>
+                        <div class="why-badge-small">👑 LUXURY</div>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon">🎉</div>
+                        <h3 class="why-card-title">¡EXPERIENCIA ÚNICA!</h3>
+                        <p class="why-card-description">No somos una tienda normal. Somos tu nueva obsesión. Compra aquí y nunca querrás ir a otro sitio.</p>
+                        <div class="why-badge-small">❤️ ADICCIÓN</div>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon">🎁</div>
+                        <h3 class="why-card-title">¡REGALOS SORPRESA!</h3>
+                        <p class="why-card-description">Con cada compra te llevas regalos exclusivos. ¡Accesorios, descuentos y sorpresas que te van a flipar!</p>
+                        <div class="why-badge-small">🎊 GRATIS</div>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon">👑</div>
+                        <h3 class="why-card-title">¡CLUB VIP!</h3>
+                        <p class="why-card-description">Acceso exclusivo a productos que nadie más tiene. Descuentos especiales y ventas privadas solo para miembros.</p>
+                        <div class="why-badge-small">💎 EXCLUSIVO</div>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon">📱</div>
+                        <h3 class="why-card-title">¡APP MÓVIL!</h3>
+                        <p class="why-card-description">Compra desde tu móvil súper fácil. Notificaciones de ofertas, seguimiento de pedidos y mucho más.</p>
+                        <div class="why-badge-small">📲 DESCARGAR</div>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon">🌟</div>
+                        <h3 class="why-card-title">¡REVIEWS REALES!</h3>
+                        <p class="why-card-description">Miles de clientes reales han dejado sus fotos y opiniones. ¡No hay nada falso aquí, todo es 100% auténtico!</p>
+                        <div class="why-badge-small">📸 REAL</div>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon">🚀</div>
+                        <h3 class="why-card-title">¡TECNOLOGÍA AVANZADA!</h3>
+                        <p class="why-card-description">Usamos la última tecnología para darte la mejor experiencia. IA, realidad aumentada y más innovaciones.</p>
+                        <div class="why-badge-small">🤖 FUTURO</div>
+                    </div>
+
+                    <div class="why-card">
+                        <div class="why-icon">🎨</div>
+                        <h3 class="why-card-title">¡DISEÑOS ÚNICOS!</h3>
+                        <p class="why-card-description">Cada producto es una obra de arte. Diseñadores profesionales crean piezas exclusivas que no encontrarás en ningún otro sitio.</p>
+                        <div class="why-badge-small">🎭 ARTE</div>
+                    </div>
+                </div>
+
+                <div class="why-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">CLIENTES FELICES</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.8%</div>
+                        <div class="stat-label">SATISFACCIÓN</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24H</div>
+                        <div class="stat-label">ENVÍO EXPRESS</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2 años</div>
+                        <div class="stat-label">GARANTÍA</div>
+                    </div>
+                </div>
+
+                <div class="why-cta">
+                    <h3>¿Listo para la experiencia más INCREÍBLE?</h3>
+                    <p>Únete a los 50,000+ clientes que ya descubrieron el secreto</p>
+                    <button class="why-btn" onclick="scrollToProducts()">
+                        <span class="btn-text">¡QUIERO VER LOS PRODUCTOS!</span>
+                        <span class="btn-icon">🔥</span>
+                    </button>
+                    <div class="urgency-text">⚡ Solo quedan pocas unidades disponibles</div>
+                </div>
             </div>
         </section>
 
-        <section id="catalog" class="catalog stagger" aria-live="polite" aria-busy="false"></section>
-
-        <section id="reviews" class="reviews reveal" aria-label="Opiniones de clientes">
-            <h2 id="reviewsTitle">Reviews</h2>
-            <div class="reviews__grid stagger">
-                <article class="review">
-                    <header class="review__head">
-                        <span>⭐️⭐️⭐️⭐️⭐️</span>
-                        <strong>Camila</strong>
-                    </header>
-                    <p>Air Jordan 4 “Thunder” (Black/Yellow)
-“Comodidad y durabilidad en cada paso, con materiales que resaltan el diseño audaz.”</p>
-                </article>
-                <article class="review">
-                    <header class="review__head">
-                        <span>⭐️⭐️⭐️⭐️☆</span>
-                        <strong>Diego</strong>
-                    </header>
-                    <p>Air Jordan 4 “Red Thunder / Infrared”
-“Materiales duraderos y cómodos, con colores que destacan en cualquier outfit.”</p>
-                </article>
-                <article class="review">
-                    <header class="review__head">
-                        <span>⭐️⭐️⭐️⭐️⭐️</span>
-                        <strong>Sara</strong>
-                    </header>
-                    <p>ir Jordan 1 High OG “Chicago”
-“El cuero de calidad premium se siente resistente y cómodo, un clásico que nunca pasa de moda.”</p>
-                </article>
+        <!-- Productos Destacados -->
+        <section class="featured-products-section">
+            <div class="section-header">
+                <h2>⭐ Productos Destacados</h2>
+                <p>Los más populares y exclusivos de nuestra tienda</p>
             </div>
-            <form id="reviewForm" class="review-form">
-                <label id="yourReviewLabel">Tu reseña
-                    <textarea id="reviewText" rows="3" placeholder="Escribe tu experiencia..." required></textarea>
-                </label>
-                <div class="review-form__actions">
-                    <button type="submit" id="publishBtn" class="button button--primary">Publicar reseña</button>
-                    <span id="reviewHint" class="hint">Inicia sesión para publicar.</span>
+            <div class="featured-categories">
+                <div class="category-tabs">
+                    <button class="tab-button active" data-category="exclusivos">🔥 Exclusivos</button>
+                    <button class="tab-button" data-category="nuevos">✨ Más Nuevos</button>
+                    <button class="tab-button" data-category="populares">📈 Más Populares</button>
+                    <button class="tab-button" data-category="ofertas">💰 En Oferta</button>
                 </div>
-            </form>
-            <div class="socials">
-                <a class="social" href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">🐙</a>
-                <a class="social" href="mailto:tuemail@gmail.com" aria-label="Gmail">✉️</a>
-                <a class="social" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+                <div class="featured-content">
+                    <div id="exclusivos" class="category-content active">
+                        <div class="featured-grid">
+                            <div class="featured-item">
+                                <div class="featured-badge">EXCLUSIVO</div>
+                                <div class="featured-icon">👑</div>
+                                <h3>Camiseta 42 Elite</h3>
+                                <p>Edición limitada con bordado premium</p>
+                                <div class="featured-price">€49.99</div>
+                                <button class="featured-btn">Ver Detalles</button>
+                            </div>
+                            <div class="featured-item">
+                                <div class="featured-badge">VIP</div>
+                                <div class="featured-icon">💎</div>
+                                <h3>Sudadera 42 Pro</h3>
+                                <p>Material premium con tecnología avanzada</p>
+                                <div class="featured-price">€79.99</div>
+                                <button class="featured-btn">Ver Detalles</button>
+                            </div>
+                            <div class="featured-item">
+                                <div class="featured-badge">LIMITADO</div>
+                                <div class="featured-icon">⭐</div>
+                                <h3>Mochila 42 Signature</h3>
+                                <p>Diseño exclusivo solo para miembros VIP</p>
+                                <div class="featured-price">€129.99</div>
+                                <button class="featured-btn">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="nuevos" class="category-content">
+                        <div class="featured-grid">
+                            <div class="featured-item">
+                                <div class="featured-badge">NUEVO</div>
+                                <div class="featured-icon">✨</div>
+                                <h3>Gorra 42 Fresh</h3>
+                                <p>Última colección primavera 2024</p>
+                                <div class="featured-price">€29.99</div>
+                                <button class="featured-btn">Ver Detalles</button>
+                            </div>
+                            <div class="featured-item">
+                                <div class="featured-badge">ESTRENO</div>
+                                <div class="featured-icon">🚀</div>
+                                <h3>Zapatillas 42 Boost</h3>
+                                <p>Tecnología de amortiguación revolucionaria</p>
+                                <div class="featured-price">€89.99</div>
+                                <button class="featured-btn">Ver Detalles</button>
+                            </div>
+                            <div class="featured-item">
+                                <div class="featured-badge">INNOVACIÓN</div>
+                                <div class="featured-icon">💡</div>
+                                <h3>Reloj 42 Smart</h3>
+                                <p>Smartwatch con funciones exclusivas</p>
+                                <div class="featured-price">€199.99</div>
+                                <button class="featured-btn">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="populares" class="category-content">
+                        <div class="featured-grid">
+                            <div class="featured-item">
+                                <div class="featured-badge">TOP</div>
+                                <div class="featured-icon">🔥</div>
+                                <h3>Camiseta 42 Classic</h3>
+                                <p>El modelo más vendido de la historia</p>
+                                <div class="featured-price">€19.99</div>
+                                <button class="featured-btn">Ver Detalles</button>
+                            </div>
+                            <div class="featured-item">
+                                <div class="featured-badge">FAVORITO</div>
+                                <div class="featured-icon">❤️</div>
+                                <h3>Taza 42 Premium</h3>
+                                <p>La taza que todos quieren tener</p>
+                                <div class="featured-price">€14.99</div>
+                                <button class="featured-btn">Ver Detalles</button>
+                            </div>
+                            <div class="featured-item">
+                                <div class="featured-badge">ÉXITO</div>
+                                <div class="featured-icon">📈</div>
+                                <h3>Llavero 42 Metal</h3>
+                                <p>Accesorio perfecto para cualquier llave</p>
+                                <div class="featured-price">€6.99</div>
+                                <button class="featured-btn">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ofertas" class="category-content">
+                        <div class="featured-grid">
+                            <div class="featured-item">
+                                <div class="featured-badge">OFERTA</div>
+                                <div class="featured-icon">💰</div>
+                                <h3>Pantalón 42 Sport</h3>
+                                <p>50% de descuento por tiempo limitado</p>
+                                <div class="featured-price">€29.99 <span class="old-price">€59.99</span></div>
+                                <button class="featured-btn">Ver Detalles</button>
+                            </div>
+                            <div class="featured-item">
+                                <div class="featured-badge">REBAJA</div>
+                                <div class="featured-icon">🎯</div>
+                                <h3>Chaqueta 42 Winter</h3>
+                                <p>Últimas unidades con 40% de descuento</p>
+                                <div class="featured-price">€53.99 <span class="old-price">€89.99</span></div>
+                                <button class="featured-btn">Ver Detalles</button>
+                            </div>
+                            <div class="featured-item">
+                                <div class="featured-badge">FLASH</div>
+                                <div class="featured-icon">⚡</div>
+                                <h3>Pack 42 Complete</h3>
+                                <p>3 productos por el precio de 2</p>
+                                <div class="featured-price">€39.99 <span class="old-price">€59.99</span></div>
+                                <button class="featured-btn">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Productos en Venta -->
+        <section class="products-section" id="products">
+            <div class="section-header">
+                <h2>🛍️ Productos en Venta</h2>
+                <p>Descubre nuestra colección exclusiva de productos 42</p>
+            </div>
+            <section id="catalog" class="catalog"></section>
+        </section>
+
+        <!-- Reseñas Reales -->
+        <section class="real-reviews-section" id="reviews">
+            <div class="section-header">
+                <h2>🌟 Reseñas Reales</h2>
+                <p>Lo que dicen nuestros clientes sobre nosotros</p>
+            </div>
+            <div class="reviews-container">
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-card-header">
+                            <div class="review-product-info">
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <span class="review-product">Sudadera 42</span>
+                            </div>
+                            <div class="review-user">
+                                <div class="review-avatar-small">👤</div>
+                                <span class="review-user-name">María G.</span>
+                            </div>
+                        </div>
+                        <div class="review-card-content">
+                            <p class="review-comment-preview">"Increíble calidad! La sudadera llegó en 24h y es exactamente como la pedí. El logo se ve perfecto y el material es súper cómodo."</p>
+                        </div>
+                        <div class="review-card-footer">
+                            <span class="review-date">Hace 2 días</span>
+                            <button class="btn-read-more">Leer más</button>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-card-header">
+                            <div class="review-product-info">
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <span class="review-product">Taza 42</span>
+                            </div>
+                            <div class="review-user">
+                                <div class="review-avatar-small">👤</div>
+                                <span class="review-user-name">Carlos M.</span>
+                            </div>
+                        </div>
+                        <div class="review-card-content">
+                            <p class="review-comment-preview">"La mejor taza que he tenido nunca. El diseño es perfecto y mantiene el café caliente por horas. ¡100% recomendada!"</p>
+                        </div>
+                        <div class="review-card-footer">
+                            <span class="review-date">Hace 5 días</span>
+                            <button class="btn-read-more">Leer más</button>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-card-header">
+                            <div class="review-product-info">
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <span class="review-product">Mochila 42</span>
+                            </div>
+                            <div class="review-user">
+                                <div class="review-avatar-small">👤</div>
+                                <span class="review-user-name">Ana L.</span>
+                            </div>
+                        </div>
+                        <div class="review-card-content">
+                            <p class="review-comment-preview">"¡Qué mochila tan increíble! Resistente, bonita y con mucho espacio. Todos me preguntan dónde la compré. Definitivamente volveré a comprar."</p>
+                        </div>
+                        <div class="review-card-footer">
+                            <span class="review-date">Hace 1 semana</span>
+                            <button class="btn-read-more">Leer más</button>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-card-header">
+                            <div class="review-product-info">
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <span class="review-product">Gorra 42</span>
+                            </div>
+                            <div class="review-user">
+                                <div class="review-avatar-small">👤</div>
+                                <span class="review-user-name">David R.</span>
+                            </div>
+                        </div>
+                        <div class="review-card-content">
+                            <p class="review-comment-preview">"Perfecta para el verano! La gorra es muy cómoda y el logo se ve genial. El envío fue súper rápido, llegó al día siguiente."</p>
+                        </div>
+                        <div class="review-card-footer">
+                            <span class="review-date">Hace 3 días</span>
+                            <button class="btn-read-more">Leer más</button>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-card-header">
+                            <div class="review-product-info">
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <span class="review-product">Camiseta 42</span>
+                            </div>
+                            <div class="review-user">
+                                <div class="review-avatar-small">👤</div>
+                                <span class="review-user-name">Laura S.</span>
+                            </div>
+                        </div>
+                        <div class="review-card-content">
+                            <p class="review-comment-preview">"Me encanta esta camiseta! El color verde neón es espectacular y la calidad del algodón es excelente. Ya he pedido otra de diferente color."</p>
+                        </div>
+                        <div class="review-card-footer">
+                            <span class="review-date">Hace 4 días</span>
+                            <button class="btn-read-more">Leer más</button>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-card-header">
+                            <div class="review-product-info">
+                                <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                <span class="review-product">Llavero 42</span>
+                            </div>
+                            <div class="review-user">
+                                <div class="review-avatar-small">👤</div>
+                                <span class="review-user-name">Miguel T.</span>
+                            </div>
+                        </div>
+                        <div class="review-card-content">
+                            <p class="review-comment-preview">"Pequeño pero perfecto! El llavero es muy resistente y el diseño es único. Un detalle perfecto para completar mi colección de 42."</p>
+                        </div>
+                        <div class="review-card-footer">
+                            <span class="review-date">Hace 6 días</span>
+                            <button class="btn-read-more">Leer más</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reviews-actions">
+                    <button class="btn-add-review" onclick="showAddReviewModal()">
+                        <span class="btn-icon">✍️</span>
+                        <span class="btn-text">Dejar tu Reseña</span>
+                    </button>
+                    <button class="btn-view-all" onclick="showAllReviews()">
+                        <span class="btn-icon">📖</span>
+                        <span class="btn-text">Ver Todas las Reseñas</span>
+                    </button>
+                </div>
             </div>
         </section>
     </main>
+    <div id="toast" class="toast"></div>
 
+    <!-- Modal de producto -->
+    <dialog id="productModal" class="modal product-modal">
+        <div class="modal__content product-modal-content" id="productModalContent">
+            <!-- El contenido se genera dinámicamente por animations.js -->
+        </div>
+    </dialog>
+
+    <!-- Carrito -->
     <aside id="cart" class="cart" aria-hidden="true">
-        <header class="cart__header">
-            <h2>Tu carrito</h2>
-            <button id="closeCart" class="icon-button" aria-label="Cerrar carrito">✕</button>
-        </header>
+        <div class="cart__header">
+            <h2>Tu Carrito</h2>
+            <button class="button button--secondary" onclick="hideCart()">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
         <div id="cartItems" class="cart__items"></div>
-        <footer class="cart__footer">
-            <div class="cart__totals">
-                <span>Total</span>
-                <strong id="cartTotal">$0.00</strong>
+        <div class="cart__footer">
+            <div class="cart__total">
+                <span>Total:</span>
+                <span id="cartTotal">0.00 �</span>
             </div>
-            <div class="payment">
-                <div class="pay-methods">
-                    <label><input type="radio" name="pay" value="card" checked> Tarjeta</label>
-                    <label><input type="radio" name="pay" value="paypal"> PayPal</label>
-                </div>
-                <div id="cardFields" class="card-fields">
-                    <input id="cardNumber" inputmode="numeric" placeholder="Número de tarjeta" maxlength="19">
-                    <div class="row">
-                        <input id="cardExp" inputmode="numeric" placeholder="MM/AA" maxlength="5">
-                        <input id="cardCvc" inputmode="numeric" placeholder="CVC" maxlength="4">
-                    </div>
-                </div>
-                <div id="paypalContainer" class="paypal" hidden>
-                    <div id="paypalButtons"></div>
-                </div>
-            </div>
-            <button id="checkout" class="button button--primary" disabled>Pagar</button>
-        </footer>
+            <a href="checkout.html" id="checkout" class="button button--primary button--full" disabled>
+                Finalizar Compra
+            </a>
+        </div>
     </aside>
+    <div id="cartBackdrop" class="backdrop"></div>
 
-    <div id="cartBackdrop" class="backdrop" hidden></div>
-
-    <div id="toast" class="toast" hidden>Producto añadido al carrito</div>
-    <div id="successOverlay" class="success-overlay" hidden>
-        <div class="success-box">
-            <div class="check">✓</div>
-            <h3>Tu compra fue realizada con éxito</h3>
-            <p>En los próximos días te enviaremos un Gmail.</p>
-            <button id="closeSuccess" class="button">Cerrar</button>
-        </div>
-    </div>
-
+    <!-- Modal de Inicio de Sesi�n -->
     <dialog id="authModal" class="modal">
-        <form method="dialog" class="modal__content">
-            <header class="modal__header">
-                <h3>Acceso</h3>
-                <button id="closeAuth" class="icon-button" aria-label="Cerrar">✕</button>
-            </header>
-            <div class="tabs">
-                <button type="button" class="tab tab--active" data-tab="login">Iniciar sesión</button>
-                <button type="button" class="tab" data-tab="register">Crear cuenta</button>
-            </div>
-            <div class="tabpanels">
-                <div class="tabpanel" data-panel="login">
-                    <label>Email
-                        <input id="loginEmail" type="email" placeholder="tú@correo.com" required>
-                    </label>
-                    <label>Contraseña
-                        <input id="loginPass" type="password" placeholder="••••••••" required>
-                    </label>
-                    <button type="submit" class="button button--primary">Entrar</button>
-                </div>
-                <div class="tabpanel" data-panel="register" hidden>
-                    <label>Nombre
-                        <input id="regName" type="text" placeholder="Tu nombre" required>
-                    </label>
-                    <label>Email
-                        <input id="regEmail" type="email" placeholder="tú@correo.com" required>
-                    </label>
-                    <label>Contraseña
-                        <input id="regPass" type="password" placeholder="••••••••" required>
-                    </label>
-                    <button type="submit" class="button button--primary">Crear cuenta</button>
-                </div>
-            </div>
-        </form>
-    </dialog>
-
-    <dialog id="settingsModal" class="modal">
-        <form method="dialog" class="modal__content" id="settingsForm">
-            <header class="modal__header">
-                <h3>Ajustes de la cuenta</h3>
-                <button id="closeSettings" class="icon-button" aria-label="Cerrar">✕</button>
-            </header>
-            <div class="settings-grid">
-                <img id="avatarPreview" class="avatar-preview" alt="avatar preview" />
-                <div class="field">
-                    <label>Foto de perfil
-                        <input id="avatarInput" type="file" accept="image/*">
-                    </label>
-                    <label>Nombre completo
-                        <input id="fullNameInput" type="text" placeholder="Tu nombre completo">
-                    </label>
-                    <label>Nombre de usuario
-                        <input id="usernameInput" type="text" placeholder="Tu usuario">
-                    </label>
-                    <label>Email de contacto
-                        <input id="emailInput" type="email" placeholder="tú@correo.com">
-                    </label>
-                    <label>Teléfono
-                        <input id="phoneInput" type="tel" placeholder="+34 600 000 000">
-                    </label>
-                    <label>Dirección de envío
-                        <input id="addressInput" type="text" placeholder="Calle y número">
-                    </label>
-                    <div class="field" style="grid-template-columns: 1fr 1fr; display: grid; gap: 8px;">
-                        <label>Ciudad
-                            <input id="cityInput" type="text" placeholder="Ciudad">
-                        </label>
-                        <label>Código postal
-                            <input id="zipInput" type="text" placeholder="CP">
-                        </label>
-                    </div>
-                    <label>País
-                        <input id="countryInput" type="text" placeholder="País">
-                    </label>
-                </div>
-            </div>
-            <button type="submit" class="button button--primary">Guardar</button>
-        </form>
-    </dialog>
-
-    <dialog id="trackingModal" class="modal">
         <div class="modal__content">
-            <header class="modal__header">
-                <h3>Seguimiento de mi pedido</h3>
-                <button id="closeTracking" class="icon-button" aria-label="Cerrar">✕</button>
-            </header>
-            <div id="trackingList" class="list"></div>
-        </div>
-    </dialog>
-
-    <dialog id="purchasesModal" class="modal">
-        <div class="modal__content">
-            <header class="modal__header">
-                <h3>Compras recientes</h3>
-                <button id="closePurchases" class="icon-button" aria-label="Cerrar">✕</button>
-            </header>
-            <div id="purchasesList" class="list"></div>
-        </div>
-    </dialog>
-
-    <dialog id="productModal" class="modal">
-        <div class="modal__content">
-            <header class="modal__header">
-                <h3 id="pmTitle">Producto</h3>
-                <button id="closeProduct" class="icon-button" aria-label="Cerrar">✕</button>
-            </header>
-            <div class="product-detail">
-                <div id="pmThumb" class="pd__thumb">👟</div>
-                <p id="pmDesc" class="pd__desc"></p>
-                <div class="pd__meta">
-                    <span id="pmPrice" class="price"></span>
-                    <div class="cart__qty">
-                        <button class="qty-btn" id="pmMinus">-</button>
-                        <span id="pmQty">1</span>
-                        <button class="qty-btn" id="pmPlus">+</button>
-                    </div>
-                </div>
-                <div class="payments">
-                    <span>Aceptamos:</span>
-                    <div class="payments__icons">
-                        <span class="pay">VISA</span>
-                        <span class="pay">Mastercard</span>
-                        <span class="pay">PayPal</span>
-                        <span class="pay">Bizum</span>
-                    </div>
-                </div>
-                <button id="pmAdd" class="button button--primary">Añadir al carrito</button>
+            <div class="modal__header">
+                <h2>Iniciar Sesi�n</h2>
+                <button class="button button--secondary" data-close>
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
             </div>
-        </div>
-    </dialog>
-
-    <dialog id="reviewModal" class="modal">
-        <form method="dialog" class="modal__content" id="reviewModalForm">
-            <header class="modal__header">
-                <h3>Deja tu reseña</h3>
-                <button id="closeReview" class="icon-button" aria-label="Cerrar">✕</button>
-            </header>
-            <div class="stars" id="stars">
-                <button type="button" data-star="1">★</button>
-                <button type="button" data-star="2">★</button>
-                <button type="button" data-star="3">★</button>
-                <button type="button" data-star="4">★</button>
-                <button type="button" data-star="5">★</button>
-            </div>
-            <label>Tu opinión
-                <textarea id="reviewModalText" rows="4" placeholder="Escribe tu experiencia..." required></textarea>
-            </label>
-            <button type="submit" class="button button--primary">Publicar</button>
-        </form>
-    </dialog>
-
-    <script id="paypalSDK" async defer src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
-
-    <!-- Modal de Login -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Iniciar Sesión</h2>
-            <form id="loginForm">
-                <input type="email" id="loginEmail" placeholder="Email" required>
-                <input type="password" id="loginPassword" placeholder="Contraseña" required>
-                <button type="submit">Iniciar Sesión</button>
+            <form id="loginForm" class="form">
+                <div class="form__group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form__group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="form__group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberMe">
+                        <span class="checkmark"></span>
+                        Mantener sesión iniciada
+                    </label>
+                </div>
+                <button type="submit" class="button button--primary button--full">Iniciar Sesión</button>
             </form>
         </div>
-    </div>
+    </dialog>
 
     <!-- Modal de Registro -->
-    <div id="registerModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Registrarse</h2>
-            <form id="registerForm">
-                <input type="text" id="registerName" placeholder="Nombre" required>
-                <input type="email" id="registerEmail" placeholder="Email" required>
-                <input type="password" id="registerPassword" placeholder="Contraseña" required>
-                <button type="submit">Registrarse</button>
+    <dialog id="registerModal" class="modal">
+        <div class="modal__content">
+            <div class="modal__header">
+                <h2>Crear Cuenta</h2>
+                <button class="button button--secondary" data-close>
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <form id="registerForm" class="form">
+                <div class="form__group">
+                    <label for="regName">Nombre completo</label>
+                    <input type="text" id="regName" required>
+                </div>
+                <div class="form__group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="form__group">
+                    <label for="regPassword">Contrase�a</label>
+                    <input type="password" id="regPassword" required>
+                </div>
+                <button type="submit" class="button button--primary button--full">Crear Cuenta</button>
             </form>
         </div>
-    </div>
+    </dialog>
 
-    <!-- Modal del Carrito -->
-    <div id="cartModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Tu Carrito</h2>
-            <div id="cart-container"></div>
+    <!-- Modal de Ajustes -->
+    <dialog id="settingsModal" class="modal">
+        <div class="modal__content">
+            <div class="modal__header">
+                <h2>Ajustes de Perfil</h2>
+                <button class="button button--secondary" data-close>
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <form id="settingsForm" class="form">
+                <div class="form__avatar">
+                    <img id="avatarPreview" src="https://raw.githubusercontent.com/Krycoow/42-Shop/main/assets/avatar.png" alt="Avatar Preview">
+                    <label for="avatarInput" class="button button--secondary">
+                        Cambiar foto
+                        <input type="file" id="avatarInput" accept="image/*" hidden>
+                    </label>
+                </div>
+                <div class="form__group">
+                    <label for="fullName">Nombre completo</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form__group">
+                    <label for="phone">Tel�fono</label>
+                    <input type="tel" id="phone">
+                </div>
+                <div class="form__group">
+                    <label for="address">Direcci�n</label>
+                    <input type="text" id="address">
+                </div>
+                <div class="form__group">
+                    <label for="city">Ciudad</label>
+                    <input type="text" id="city">
+                </div>
+                <div class="form__group">
+                    <label for="postcode">C�digo Postal</label>
+                    <input type="text" id="postcode">
+                </div>
+                <button type="submit" class="button button--primary button--full">Guardar Cambios</button>
+            </form>
         </div>
-    </div>
+    </dialog>
 
-    <!-- Sección de Historial de Pedidos -->
-    <div id="orderHistoryModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Historial de Pedidos</h2>
-            <div id="orders-history"></div>
-        </div>
-    </div>
+    <!-- Toast para notificaciones -->
+    <div id="toast" class="toast"></div>
 
+    <!-- Sección de reseñas eliminada - duplicada -->
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js"></script>
+    
+    <script src="firebase-config.js"></script>
+    <script src="language-currency.js"></script>
+    <script src="reviews.js"></script>
+    <script src="animations.js"></script>
+    <script src="modern-navigation.js"></script>
+    <script src="modern-cart.js"></script>
+    <!-- <script src="language-currency-simple.js"></script> -->
+    <script src="price-formatter.js"></script>
+    <script src="about-section.js"></script>
+    <script src="testimonials-section.js"></script>
+    <script src="featured-products.js"></script>
+    <script src="footer-section.js"></script>
+    <script src="reviews-simple.js"></script>
+    <script src="amazing-product-modal.js"></script>
+    <script src="TextPressure.js"></script>
+    <script src="professional-reviews.js"></script>
+    <script src="professional-enhancements.js"></script>
+    <script src="amazon-star-rating.js"></script>
+    <script src="header-simple.js"></script>
+    <script src="mind-blowing-product-click.js"></script>
+    <script src="user-settings.js"></script>
     <script src="app.js"></script>
-    <script src="app-firebase.js" type="module"></script>
+    <script src="emergency-products.js"></script>
+    <!-- <script src="celebrity-section.js"></script> -->
+    <script src="professional-product-animations.js"></script>
+    <!-- <script src="professional-reviews-data.js"></script> -->
+    <!-- <script src="enhanced-reviews-system.js"></script> -->
+    <script src="real-reviews-system.js"></script>
+    <script src="cart-animation-system.js"></script>
+    <script src="payment-system.js"></script>
+    <script src="custom-products-showcase.js"></script>
+    <script src="force-products.js"></script>
+
+    <!-- Modal de Presupuesto Custom -->
+    <dialog id="customQuoteModal" class="modal custom-quote-modal">
+        <div class="modal__content">
+            <div class="modal__header">
+                <h2>🎨 Solicitar Presupuesto Custom</h2>
+                <button class="modal__close" onclick="closeCustomQuoteModal()">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <form id="customQuoteForm" class="modal__form">
+                <div class="form-group">
+                    <label for="customerName">Nombre Completo</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerEmail">Email</label>
+                    <input type="email" id="customerEmail" name="customerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">Teléfono</label>
+                    <input type="tel" id="customerPhone" name="customerPhone">
+                </div>
+                <div class="form-group">
+                    <label for="productType">Tipo de Producto</label>
+                    <select id="productType" name="productType" required>
+                        <option value="">Selecciona un producto</option>
+                        <option value="camiseta">Camiseta Custom</option>
+                        <option value="sudadera">Sudadera Custom</option>
+                        <option value="gorra">Gorra Custom</option>
+                        <option value="mochila">Mochila Custom</option>
+                        <option value="accesorio">Accesorio Custom</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Cantidad</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="1000" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="designDescription">Descripción del Diseño</label>
+                    <textarea id="designDescription" name="designDescription" rows="4" 
+                              placeholder="Describe tu diseño, colores, texto, logo, etc." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="budget">Presupuesto Aproximado (€)</label>
+                    <input type="number" id="budget" name="budget" min="0" step="0.01" 
+                           placeholder="Tu presupuesto aproximado">
+                </div>
+                <div class="form-group">
+                    <label for="timeline">¿Cuándo lo necesitas?</label>
+                    <select id="timeline" name="timeline">
+                        <option value="urgente">Urgente (1-3 días)</option>
+                        <option value="normal">Normal (1 semana)</option>
+                        <option value="flexible">Flexible (2+ semanas)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="additionalInfo">Información Adicional</label>
+                    <textarea id="additionalInfo" name="additionalInfo" rows="3" 
+                              placeholder="Cualquier información adicional que nos ayude a crear tu diseño perfecto"></textarea>
+                </div>
+                <button type="submit" class="button button--primary button--full">
+                    🚀 Enviar Solicitud de Presupuesto
+                </button>
+            </form>
+            <div class="modal__footer">
+                <p>💡 <strong>¿Qué incluye?</strong> Diseño personalizado, muestra digital, presupuesto detallado y asesoramiento profesional.</p>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Scripts del carrito rediseñado -->
+    <script src="final-cart-fix.js"></script>
+    <script src="payment-screen.js"></script>
+    <script src="user-profile-system.js"></script>
+    <script src="discount-notification.js"></script>
+    <script src="language-currency-simple.js"></script>
+    <script src="price-formatter.js"></script>
+    <script src="modern-navigation-system.js"></script>
+    <script src="custom-clothing-functionality.js"></script>
+    <script src="featured-products-direct-buy.js"></script>
+    <script src="fix-all-navigation.js"></script>
+    <script src="test-cart-debug.js"></script>
+    
+    <script>
+        // Sistema completo de círculos verdes funcionales
+        document.addEventListener('DOMContentLoaded', function() {
+            // Esperar a que se carguen los indicadores
+            setTimeout(function() {
+                const indicators = document.querySelectorAll('.indicator-dot');
+                console.log('🔍 Indicadores encontrados:', indicators.length);
+                
+                // Mapeo de secciones
+                const sectionMap = {
+                    'inicio': 'home',
+                    'sobre-nosotros': 'about', 
+                    'productos': 'products',
+                    'reseñas': 'reviews'
+                };
+                
+                // Función para actualizar el indicador activo
+                function updateActiveIndicator(activeSection) {
+                    document.querySelectorAll('.indicator-dot').forEach(dot => {
+                        dot.classList.remove('active');
+                        if (dot.dataset.section === activeSection) {
+                            dot.classList.add('active');
+                        }
+                    });
+                }
+                
+                // Función para detectar la sección actual al hacer scroll
+                function updateActiveSectionOnScroll() {
+                    const sections = Object.values(sectionMap);
+                    const scrollPosition = window.scrollY + 100; // Offset para considerar el header
+                    
+                    for (let i = sections.length - 1; i >= 0; i--) {
+                        const section = document.getElementById(sections[i]);
+                        if (section && section.offsetTop <= scrollPosition) {
+                            const sectionName = Object.keys(sectionMap).find(key => sectionMap[key] === sections[i]);
+                            updateActiveIndicator(sectionName);
+                            break;
+                        }
+                    }
+                }
+                
+                // Event listeners para los círculos
+                indicators.forEach(function(indicator) {
+                    indicator.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const section = this.dataset.section;
+                        console.log('🟢 Círculo clickeado:', section);
+                        
+                        const targetId = sectionMap[section];
+                        if (targetId) {
+                            const targetElement = document.getElementById(targetId);
+                            if (targetElement) {
+                                // Scroll suave a la sección
+                                targetElement.scrollIntoView({ 
+                                    behavior: 'smooth', 
+                                    block: 'start' 
+                                });
+                                
+                                // Marcar como activo inmediatamente
+                                updateActiveIndicator(section);
+                                
+                                console.log('✅ Navegando a:', targetId);
+                            }
+                        }
+                    });
+                });
+                
+                // Detectar scroll para actualizar indicadores automáticamente
+                let scrollTimeout;
+                window.addEventListener('scroll', function() {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(updateActiveSectionOnScroll, 100);
+                });
+                
+                // Actualizar al cargar la página
+                updateActiveSectionOnScroll();
+                
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
-
-
-

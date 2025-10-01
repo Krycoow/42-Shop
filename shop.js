@@ -51,16 +51,30 @@ export class Shop {
 
         try {
             const userId = this.auth.currentUser.uid;
+            const quantityNum = parseInt(quantity);
+            
+            if (isNaN(quantityNum) || quantityNum < 1) {
+                alert('Por favor, selecciona una cantidad válida');
+                return;
+            }
+
             if (this.cart[productId]) {
-                this.cart[productId] += quantity;
+                this.cart[productId] += quantityNum;
             } else {
-                this.cart[productId] = quantity;
+                this.cart[productId] = quantityNum;
             }
 
             await this.db.ref(`carts/${userId}`).set(this.cart);
             this.updateCartUI();
+            
+            // Mostrar feedback visual
+            const toast = document.getElementById('toast');
+            toast.textContent = `Producto añadido al carrito (${quantityNum})`;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
         } catch (error) {
             console.error('Error añadiendo al carrito:', error);
+            alert('Error al añadir al carrito: ' + error.message);
         }
     }
 
@@ -118,22 +132,113 @@ export class Shop {
         }, 0);
     }
 
+    // Generar estrellas para el rating
+    generateStars(rating) {
+        const roundedRating = Math.round(rating * 2) / 2; // Redondear a medio punto
+        return Array(5).fill(0).map((_, i) => `
+            <span class="star ${i < roundedRating ? 'star--filled' : ''}">★</span>
+        `).join('');
+    }
+
     // Actualizar UI de productos
     updateProductsUI() {
-        const productsContainer = document.getElementById('products-container');
-        if (!productsContainer) return;
+        const catalogContainer = document.getElementById('catalog');
+        if (!catalogContainer) return;
 
-        productsContainer.innerHTML = '';
+        // Si no hay productos en Firebase, usar los productos por defecto
+        if (Object.keys(this.products).length === 0) {
+            this.products = {
+                1: {
+                    id: 1,
+                    name: "Sudadera 42",
+                    description: "Sudadera negra con logo de 42. Algodón premium, edición limitada.",
+                    price: 39.99,
+                    image: "https://raw.githubusercontent.com/Krycoow/42-Shop/main/assets/sudadera.png",
+                    averageRating: 0,
+                    reviewCount: 0
+                },
+                2: {
+                    id: 2,
+                    name: "Taza 42",
+                    description: "Taza negra con logo de 42. Ideal para café o té.",
+                    price: 14.99,
+                    image: "https://raw.githubusercontent.com/Krycoow/42-Shop/main/assets/taza.png",
+                    averageRating: 0,
+                    reviewCount: 0
+                },
+                3: {
+                    id: 3,
+                    name: "Gorra 42",
+                    description: "Gorra negra con logo de 42. Ajustable y transpirable.",
+                    price: 24.99,
+                    image: "https://raw.githubusercontent.com/Krycoow/42-Shop/main/assets/gorra.png",
+                    averageRating: 0,
+                    reviewCount: 0
+                },
+                4: {
+                    id: 4,
+                    name: "Camiseta 42",
+                    description: "Camiseta blanca con logo de 42 en verde neón.",
+                    price: 19.99,
+                    image: "https://raw.githubusercontent.com/Krycoow/42-Shop/main/assets/camiseta.png",
+                    averageRating: 0,
+                    reviewCount: 0
+                },
+                5: {
+                    id: 5,
+                    name: "Mochila 42",
+                    description: "Mochila negra resistente con detalles verdes y logo 42.",
+                    price: 49.99,
+                    image: "https://raw.githubusercontent.com/Krycoow/42-Shop/main/assets/mochila.png",
+                    averageRating: 0,
+                    reviewCount: 0
+                },
+                6: {
+                    id: 6,
+                    name: "Llavero 42",
+                    description: "Llavero metálico con logo de 42. Pequeño y elegante.",
+                    price: 6.99,
+                    image: "https://raw.githubusercontent.com/Krycoow/42-Shop/main/assets/llavero.png",
+                    averageRating: 0,
+                    reviewCount: 0
+                }
+            };
+        }
+
+        catalogContainer.innerHTML = '';
         Object.entries(this.products).forEach(([id, product]) => {
-            const productElement = document.createElement('div');
-            productElement.className = 'product-card';
+            const productElement = document.createElement('article');
+            productElement.className = 'product';
+            productElement.dataset.productId = id;
             productElement.innerHTML = `
-                <img src="${product.image}" alt="${product.name}">
-                <h3>${product.name}</h3>
-                <p>${product.price}€</p>
-                <button onclick="shop.addToCart('${id}')">Añadir al carrito</button>
+                <img src="${product.image}" alt="${product.name}" class="product__image">
+                <div class="product__info">
+                    <h3 class="product__name">${product.name}</h3>
+                    <p class="product__description">${product.description}</p>
+                    <div class="rating-display">
+                        ${this.generateStars(product.averageRating || 0)}
+                        <span class="review-count">(${product.reviewCount || 0})</span>
+                    </div>
+                    <p class="product__price">${product.price.toFixed(2)} €</p>
+                    <div class="quantity-selector">
+                        <button type="button" class="quantity-btn minus" onclick="this.nextElementSibling.stepDown();this.nextElementSibling.dispatchEvent(new Event('change'))">-</button>
+                        <input type="number" value="1" min="1" max="99" class="quantity-input" 
+                               onchange="this.value = Math.max(1, Math.min(99, parseInt(this.value) || 1))">
+                        <button type="button" class="quantity-btn plus" onclick="this.previousElementSibling.stepUp();this.previousElementSibling.dispatchEvent(new Event('change'))">+</button>
+                    </div>
+                    <button class="button button--primary" onclick="shop.addToCart('${id}', this.parentElement.querySelector('.quantity-input').value)">
+                        Añadir al carrito
+                    </button>
+                </div>
+                <div class="reviews-container" id="reviews-${id}"></div>
             `;
-            productsContainer.appendChild(productElement);
+            catalogContainer.appendChild(productElement);
+            
+            // Inicializar reseñas
+            const reviewsContainer = productElement.querySelector(`#reviews-${id}`);
+            if (reviewsContainer) {
+                new ReviewSystem().renderReviews(id, reviewsContainer);
+            }
         });
     }
 

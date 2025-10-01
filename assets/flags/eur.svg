@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 12 8" preserveAspectRatio="xMidYMid slice">
+  <rect width="12" height="8" fill="#003399"/>
+  <g fill="#FFCC00">
+    <circle cx="6" cy="2" r="0.2"/>
+    <circle cx="8" cy="3" r="0.2"/>
+    <circle cx="8" cy="5" r="0.2"/>
+    <circle cx="6" cy="6" r="0.2"/>
+    <circle cx="4" cy="5" r="0.2"/>
+    <circle cx="4" cy="3" r="0.2"/>
+  </g>
+</svg>

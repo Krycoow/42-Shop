@@ -1,0 +1,117 @@
+/* Mini zoom solo para productos de venta */
+.products-section .product-card {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center;
+}
+
+.products-section .product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 
+        0 10px 25px rgba(0, 255, 0, 0.2),
+        0 0 20px rgba(0, 255, 0, 0.1),
+        0 0 40px rgba(0, 255, 0, 0.05);
+    border-color: rgba(0, 255, 0, 0.3);
+}
+
+/* Efecto adicional para la imagen del producto */
+.products-section .product-card:hover .product-image {
+    transform: scale(1.02);
+    filter: brightness(1.1) contrast(1.05);
+}
+
+/* Efecto para el título del producto */
+.products-section .product-card:hover .product-title {
+    color: #00ff00;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+/* Efecto para el precio */
+.products-section .product-card:hover .product-price {
+    color: #00ff00;
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
+    transform: scale(1.02);
+}
+
+/* Efecto para el botón */
+.products-section .product-card:hover .button--primary {
+    background: linear-gradient(135deg, #00ff00, #00cc00);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Animación suave para todos los elementos */
+.products-section .product-card .product-image,
+.products-section .product-card .product-title,
+.products-section .product-card .product-price,
+.products-section .product-card .button--primary {
+    transition: all 0.3s ease;
+}
+
+/* Efecto de resplandor en el borde */
+.products-section .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background: linear-gradient(45deg, transparent, rgba(0, 255, 0, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.products-section .product-card:hover::before {
+    opacity: 1;
+}
+
+/* Asegurar que solo afecte a productos de venta */
+.catalog .product-card {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de partículas sutiles en hover */
+.products-section .product-card:hover::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(0, 255, 0, 0.1), transparent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: hoverGlow 1s ease-out;
+    pointer-events: none;
+}
+
+@keyframes hoverGlow {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    50% {
+        width: 100px;
+        height: 100px;
+        opacity: 0.3;
+    }
+    100% {
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .products-section .product-card:hover {
+        transform: scale(1.02);
+    }
+    
+    .products-section .product-card:hover .product-image {
+        transform: scale(1.01);
+    }
+}

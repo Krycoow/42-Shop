@@ -1,6 +1,9 @@
 (function(){
+  // Elementos del DOM
   const itemsEl = document.getElementById('coItems');
   const totalEl = document.getElementById('coTotal');
+  const subtotalEl = document.getElementById('subtotal');
+  const shippingEl = document.getElementById('shipping');
   const form = document.getElementById('checkoutForm');
   const payRadios = Array.from(document.querySelectorAll('input[name="pay"]'));
   const cardFields = document.getElementById('coCardFields');
@@ -11,10 +14,178 @@
   const paypalButtonsHost = document.getElementById('coPaypalButtons');
   const toast = document.getElementById('toast');
   const successOverlay = document.getElementById('successOverlay');
+  
+  // Variables de estado
+  let currentStep = 1;
+  const totalSteps = 3;
 
-  function showToast(message){
-    toast.textContent = message; toast.hidden = false;
-    clearTimeout(showToast._t); showToast._t = setTimeout(()=> toast.hidden = true, 1800);
+  function showToast(message, type = 'info'){
+    toast.textContent = message;
+    toast.className = `toast toast-${type}`;
+    toast.hidden = false;
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(() => toast.hidden = true, 3000);
+  }
+
+  // Funciones para manejar pasos
+  function nextStep() {
+    if (validateCurrentStep()) {
+      if (currentStep < totalSteps) {
+        currentStep++;
+        updateStepDisplay();
+        updateProgressBar();
+      }
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 1) {
+      currentStep--;
+      updateStepDisplay();
+      updateProgressBar();
+    }
+  }
+
+  function updateStepDisplay() {
+    // Ocultar todos los pasos
+    document.querySelectorAll('.form-step').forEach(step => {
+      step.classList.remove('active');
+    });
+    
+    // Mostrar paso actual
+    const currentStepEl = document.getElementById(`step${currentStep}`);
+    if (currentStepEl) {
+      currentStepEl.classList.add('active');
+    }
+    
+    // Actualizar contenido según el paso
+    if (currentStep === 3) {
+      updateOrderSummary();
+    }
+  }
+
+  function updateProgressBar() {
+    document.querySelectorAll('.progress-step').forEach((step, index) => {
+      step.classList.toggle('active', index + 1 <= currentStep);
+    });
+  }
+
+  function validateCurrentStep() {
+    switch (currentStep) {
+      case 1:
+        return validateShippingData();
+      case 2:
+        return validatePaymentData();
+      case 3:
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function validateShippingData() {
+    const requiredFields = ['coFullName', 'coEmail', 'coPhone', 'coCountry', 'coAddress', 'coCity', 'coZip'];
+    const missingFields = [];
+    
+    requiredFields.forEach(fieldId => {
+      const field = document.getElementById(fieldId);
+      if (!field || !field.value.trim()) {
+        missingFields.push(fieldId);
+      }
+    });
+    
+    if (missingFields.length > 0) {
+      showToast('Por favor, completa todos los campos requeridos', 'error');
+      return false;
+    }
+    
+    return true;
+  }
+
+  function validatePaymentData() {
+    const selectedPayment = document.querySelector('input[name="pay"]:checked');
+    if (!selectedPayment) {
+      showToast('Por favor, selecciona un método de pago', 'error');
+      return false;
+    }
+    
+    if (selectedPayment.value === 'card') {
+      return validateCardData();
+    }
+    
+    return true;
+  }
+
+  function validateCardData() {
+    const cardNum = cardNumber.value.replace(/\s+/g, '');
+    const exp = cardExp.value;
+    const cvc = cardCvc.value;
+    
+    if (!/^\d{13,19}$/.test(cardNum)) {
+      showToast('Número de tarjeta inválido', 'error');
+      return false;
+    }
+    
+    if (!/^(0[1-9]|1[0-2])\/(\d{2})$/.test(exp)) {
+      showToast('Fecha de expiración inválida (MM/AA)', 'error');
+      return false;
+    }
+    
+    if (!/^\d{3,4}$/.test(cvc)) {
+      showToast('CVC inválido', 'error');
+      return false;
+    }
+    
+    return true;
+  }
+
+  function updateOrderSummary() {
+    // Actualizar resumen del pedido
+    const entries = cartEntries();
+    const orderItemsEl = document.getElementById('coItems');
+    
+    if (entries.length === 0) {
+      orderItemsEl.innerHTML = '<p class="muted">No hay artículos en el carrito.</p>';
+      return;
+    }
+    
+    orderItemsEl.innerHTML = entries.map(({product, qty}) => `
+      <div class="order-item">
+        <div>
+          <div><strong>${product.name}</strong></div>
+          <div class="muted">Cantidad: ${qty}</div>
+        </div>
+        <div>${formatPrice(product.price * qty)}</div>
+      </div>
+    `).join('');
+    
+    // Actualizar información de envío
+    const shippingInfoEl = document.getElementById('shippingInfo');
+    const fullName = document.getElementById('coFullName').value;
+    const address = document.getElementById('coAddress').value;
+    const city = document.getElementById('coCity').value;
+    const zip = document.getElementById('coZip').value;
+    const country = document.getElementById('coCountry').value;
+    
+    shippingInfoEl.innerHTML = `
+      <div><strong>${fullName}</strong></div>
+      <div>${address}</div>
+      <div>${city}, ${zip}</div>
+      <div>${country}</div>
+    `;
+    
+    // Actualizar información de pago
+    const paymentInfoEl = document.getElementById('paymentInfo');
+    const selectedPayment = document.querySelector('input[name="pay"]:checked');
+    const paymentMethod = selectedPayment.value === 'card' ? 'Tarjeta de crédito/débito' : 'PayPal';
+    
+    paymentInfoEl.innerHTML = `
+      <div><strong>${paymentMethod}</strong></div>
+      ${selectedPayment.value === 'card' ? 
+        `<div>**** **** **** ${cardNumber.value.slice(-4)}</div>` : 
+        '<div>Pago seguro con PayPal</div>'
+      }
+    `;
   }
 
   function getLocale(){ const lang = localStorage.getItem('ds_lang')||'es'; return lang==='en'?'en-US':lang==='pt'?'pt-PT':'es-ES'; }
@@ -120,14 +291,77 @@
   }
 
   function completeOrder(){
-    const entries = cartEntries(); if (!entries.length) { showToast('Carrito vacío'); return; }
-    const total = entries.reduce((s,{product,qty})=> s+product.price*qty,0);
+    const entries = cartEntries(); 
+    if (!entries.length) { 
+      showToast('Carrito vacío', 'error'); 
+      return; 
+    }
+    
+    // Validar datos finales
+    if (!validateCurrentStep()) {
+      return;
+    }
+    
+    const subtotal = entries.reduce((s,{product,qty})=> s+product.price*qty,0);
+    const shipping = 5.99;
+    const total = subtotal + shipping;
+    
+    // Crear pedido
+    const orderData = {
+      id: Date.now(),
+      items: entries,
+      subtotal: subtotal,
+      shipping: shipping,
+      total: total,
+      status: 'Procesando',
+      shipTo: {
+        name: document.getElementById('coFullName').value,
+        address: document.getElementById('coAddress').value,
+        city: document.getElementById('coCity').value,
+        zip: document.getElementById('coZip').value,
+        country: document.getElementById('coCountry').value
+      },
+      paymentMethod: document.querySelector('input[name="pay"]:checked').value,
+      date: new Date().toISOString()
+    };
+    
+    // Guardar pedido
     const orders = JSON.parse(localStorage.getItem('ds_orders')||'[]');
-    orders.unshift({ id: Date.now(), items: entries.reduce((n,e)=>n+e.qty,0), total: formatPrice(total), status: 'Procesando', shipTo: document.getElementById('coAddress').value+ ', ' + document.getElementById('coCity').value });
+    orders.unshift(orderData);
     localStorage.setItem('ds_orders', JSON.stringify(orders));
+    
+    // Limpiar carrito
     localStorage.setItem('ds_cart', JSON.stringify({}));
-    successOverlay.classList.add('open');
+    
+    // Mostrar popup de éxito
+    showSuccessPopup();
   }
+
+  function showSuccessPopup() {
+    successOverlay.classList.add('show');
+    
+    // Animar elementos
+    setTimeout(() => {
+      const checkCircle = document.querySelector('.check-circle');
+      const checkMark = document.querySelector('.check-mark');
+      
+      if (checkCircle && checkMark) {
+        checkCircle.style.animation = 'checkPulse 2s ease-in-out infinite';
+        checkMark.style.animation = 'checkBounce 0.6s ease';
+      }
+    }, 100);
+  }
+
+  // Funciones globales para los botones
+  window.nextStep = nextStep;
+  window.prevStep = prevStep;
+  window.goToShop = function() {
+    window.location.href = 'index.html';
+  };
+  window.viewOrder = function() {
+    // Aquí podrías redirigir a una página de pedidos
+    showToast('Funcionalidad de pedidos próximamente', 'info');
+  };
 
   // Render initial
   renderSummary();
